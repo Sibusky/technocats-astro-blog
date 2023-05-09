@@ -1,11 +1,19 @@
 ---
 // component imports
 import MainLayout from "../layouts/MainLayout.astro";
+import Link from "../components/Link.astro"
 ---
 
 <MainLayout
   title="About TehnoCats"
   description="This page provides information about TehnoCats"
 >
-  <div>hello from about</div>
+  <section class="container about" aria-label="About TehnoCats">
+    <img src="/images/tehnoCats.jpg" alt="TehnoCats" width="200" height="330" />
+    <div class="content">
+      <h1 class="h1">TehnoCats</h1>
+      <p>This page provides information about TehnoCats</p>
+      <Link href="/blog/" text="Cats" style="primary"/>
+    </div>
+  </section>
 </MainLayout>
