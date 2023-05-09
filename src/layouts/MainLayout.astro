@@ -1,0 +1,19 @@
+---
+//component imports
+import MainHead from "./MainHead.astro";
+
+//styles import
+import '../styles/global.css'
+
+const {
+  title = "Birka internship",
+  description = "Learning the basics of Astro",
+} = Astro.props;
+---
+
+<html lang="en">
+  <MainHead {title} {description} />
+  <body>
+    <slot>Default</slot>
+  </body>
+</html>
