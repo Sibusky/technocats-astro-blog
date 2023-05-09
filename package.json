@@ -2,7 +2,7 @@
   "name": "birka-internship",
   "type": "module",
   "version": "0.0.1",
-  "browserlist": [
+  "browserslist": [
     "defaults"
   ],
   "scripts": {
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "astro": "^2.4.1",
+    "astro-icon": "^0.8.0",
     "postcss": "^8.4.23",
     "postcss-preset-env": "^8.3.2"
   }
