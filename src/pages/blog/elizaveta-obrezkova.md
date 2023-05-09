@@ -4,7 +4,7 @@ title: Elizaveta Obrezkova. My way to IT.
 date: 2023-05-09
 author: Elizaveta Obrezkova
 image: {
-  src: "/images/elizaveta-obrezkova.jpg,
+  src: "/images/elizaveta-obrezkova.jpg",
   alt: "Elizaveta Obrezkova's photo",
 }
 description: Have you ever wondered what the most important items of life are? Well, wonder no more!
