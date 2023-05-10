@@ -10,11 +10,14 @@ import '../styles/global.css'
 const {
   title = "Birka internship",
   description = "Learning the basics of Astro",
+  image,
+  frontmatter,
+  robots,
 } = Astro.props;
 ---
 
 <html lang="en">
-  <MainHead {title} {description} />
+  <MainHead {title} {description} {image} {frontmatter} {robots} />
   <body>
     <Nav />
     <main>
