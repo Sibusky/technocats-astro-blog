@@ -19,4 +19,4 @@ This repo provides the result of team TehnoCats work. It shows that the team alr
 
 Link: 
 
-<image src="./public/images/tehnoCats.jpg" alt="TehnoCats">
+<image src="./public/images/tehnoCats.jpg" alt="TehnoCats" width="304" height="374">
