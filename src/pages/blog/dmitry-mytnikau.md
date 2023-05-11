@@ -7,7 +7,7 @@ image: {
   src: "/images/dmitry_mytnikau.jpg",
   alt: "Dmitry Mytnikau's photo",
 }
-description: Have you ever wondered what the most important items of life are? Well, wonder no more!
+description: From HTML layout designer to Web-developer.
 draft: false
 category: Astro
 ---

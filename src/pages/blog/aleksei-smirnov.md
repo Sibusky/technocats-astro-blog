@@ -7,7 +7,7 @@ image: {
   src: "/images/aleksei-smirnov.jpg",
   alt: "Aleksei Smornov's photo",
 }
-description: Have you ever wondered what the most important items of life are? Well, wonder no more!
+description: Way from electricial to developer!
 draft: false
 category: Astro
 ---
