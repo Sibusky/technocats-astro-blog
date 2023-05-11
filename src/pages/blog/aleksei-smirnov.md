@@ -7,9 +7,9 @@ image: {
   src: "/images/aleksei-smirnov.jpg",
   alt: "Aleksei Smornov's photo",
 }
-description: Have you ever wondered what the most important items of life are? Well, wonder no more!
+description: Way from electricial to developer!
 draft: false
-category: Changing the career
+category: Astro
 ---
 
 My name is Aleksei Smirnov. I’m a beginner web-developer. Currently I’m looking for my first job as a frontend developer. I want to find a team with life values which are close to mine. 

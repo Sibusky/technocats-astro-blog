@@ -7,7 +7,7 @@ image: {
   src: "/images/maria-kikot.jpg",
   alt: "Maria's photo",
 }
-description: Have you ever wondered what the most important items of life are? Well, wonder no more!
+description: How to live when you are perfectionist?
 draft: false
 category: Changing the career
 ---
@@ -20,12 +20,9 @@ I thought for a long time what I wanted to do. In 2022, I made a conscious decis
 
 As developer I have such skills as:
 
-•	HTML, CSS
-
-•	JavaScript, React.js
-
-•	Visual Studio Code, Figma, Photoshop
-
-•	Git, Webpack
+- HTML, CSS
+- JavaScript, React.js
+- Visual Studio Code, Figma, Photoshop
+- Git, Webpack
 
 Now I live in US and looking for a job as a junior programmer here. My superpower is perfectionism and organization skills.
