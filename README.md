@@ -1,6 +1,6 @@
 # Birka Internship
 
-This repo provides the result of team TehnoCats work. It shows that the team already knows what Astro is. For this moment we already familiar with:
+This repo provides the result of team **TehnoCats** work. It shows that the team already knows what Astro is. For this moment we already familiar with:
 - Astro basics
 - Layouts
 - CSS & styling
