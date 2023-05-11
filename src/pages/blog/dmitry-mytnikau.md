@@ -9,7 +9,7 @@ image: {
 }
 description: Have you ever wondered what the most important items of life are? Well, wonder no more!
 draft: false
-category: Changing the career
+category: Astro
 ---
 
 Hi, there 👋!

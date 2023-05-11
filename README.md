@@ -17,6 +17,6 @@ This repo provides the result of team **TehnoCats** work. It shows that the team
 
 <image src="./public/favicon.svg" alt="TehnoCats prints" width="40" height="40">
 
-Link: 
+Link: https://astro-tehnocats.netlify.app/
 
 <image src="./public/images/tehnoCats.jpg" alt="TehnoCats" width="304" height="374">
