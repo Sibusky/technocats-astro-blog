@@ -15,7 +15,7 @@ This repo provides the result of team TehnoCats work. It shows that the team alr
 - Related posts
 - Build a sitemap
 
-<image src="./public/favicon.ico" alt="TehnoCats prints" width="40" height="40">
+<image src="./public/favicon.svg" alt="TehnoCats prints" width="40" height="40">
 
 Link: 
 
