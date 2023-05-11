@@ -1,8 +1,8 @@
 ---
-const {
-  title = "Birka internship",
-  description = "Learning the basics of Astro",
-} = Astro.props;
+// component imports
+import Seo from "../components/Seo.astro";
+
+const { title, description, image, frontmatter, robots } = Astro.props;
 ---
 
 <head>
@@ -12,6 +12,9 @@ const {
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   <meta name="description" content={description} />
+
+  <Seo {title} {description} url={Astro.url} {image} {frontmatter} {robots} />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link
     rel="preconnect"
     href="https://fonts.gstatic.com"
