@@ -15,8 +15,7 @@ This repo provides the result of team TehnoCats work. It shows that the team alr
 - Related posts
 - Build a sitemap
 
-![](/favicon.svg)
-
+![](./public/favicon.svg)
 
 Link: 
 
