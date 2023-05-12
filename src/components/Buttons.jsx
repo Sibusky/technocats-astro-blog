@@ -15,6 +15,9 @@ export default function Buttons({ id }) {
     dislikes: 0,
   });
 
+  const [isLiked, setIsLiked] = useState(false);
+  const [isDisliked, setIsDisliked] = useState(false);
+
   const firebaseConfig = {
     apiKey: "AIzaSyD9nqE3bvUrZ1RBEJfZq-Q2gvhlVVWa588",
     authDomain: "blog-rating-22da6.firebaseapp.com",
@@ -32,6 +35,18 @@ export default function Buttons({ id }) {
 
   useEffect(() => {
     getRating();
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem(`post-${id}-lastVote`) === "liked") {
+      setIsLiked(true);
+      setIsDisliked(false);
+    } else if (localStorage.getItem(`post-${id}-lastVote`) === "disliked") {
+      setIsLiked(false);
+      setIsDisliked(true);
+    } else {
+      return;
+    }
   }, []);
 
   async function getRating() {
@@ -56,6 +71,8 @@ export default function Buttons({ id }) {
         likes: ++rating.likes,
         dislikes: rating.dislikes,
       });
+      setIsLiked(true);
+      setIsDisliked(false);
       await updateDoc(docRef, rating);
     } else if (lastVote === "liked") {
       return;
@@ -66,6 +83,8 @@ export default function Buttons({ id }) {
         likes: ++rating.likes,
         dislikes: --rating.dislikes,
       });
+      setIsLiked(true);
+      setIsDisliked(false);
       await updateDoc(docRef, rating);
     } else {
       console.log("Vote type is not correct");
@@ -81,6 +100,8 @@ export default function Buttons({ id }) {
         likes: rating.likes,
         dislikes: ++rating.dislikes,
       });
+      setIsLiked(false);
+      setIsDisliked(true);
       await updateDoc(docRef, rating);
     } else if (lastVote === "liked") {
       localStorage.removeItem(`post-${id}-lastVote`);
@@ -89,6 +110,8 @@ export default function Buttons({ id }) {
         likes: --rating.likes,
         dislikes: ++rating.dislikes,
       });
+      setIsLiked(false);
+      setIsDisliked(true);
       await updateDoc(docRef, rating);
     } else if (lastVote === "disliked") {
       return;
@@ -101,7 +124,7 @@ export default function Buttons({ id }) {
   return (
     <div className="button__container">
       <button
-        className="button button-like"
+        className={`button button-like ${isLiked ? "button__selected" : null}`}
         id="like"
         onClick={() => clickLike()}
       >
@@ -113,7 +136,9 @@ export default function Buttons({ id }) {
         <span className="app-reaction-emoji-count-like">{rating.likes}</span>
       </button>
       <button
-        className="button button-dislike"
+        className={`button button-dislike ${
+          isDisliked ? "button__selected" : null
+        }`}
         id="dislike"
         onClick={() => clickDislike()}
       >

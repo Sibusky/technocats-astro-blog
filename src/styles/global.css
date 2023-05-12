@@ -846,6 +846,10 @@ header .container {
   border-color: #e6e6e6;
 }
 
+.button__selected {
+  border-color: #404ABF;
+}
+
 .button:hover {
   background: #e6e6e6;
 }
