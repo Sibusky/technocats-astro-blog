@@ -1,4 +1,5 @@
 ---
+id: 01
 layout: "../../layouts/BlogPostLayout.astro"
 title: Aleksei Smirnov. Long way to IT.
 date: 2023-05-08

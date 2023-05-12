@@ -1,4 +1,5 @@
 ---
+id: 05
 layout: "../../layouts/BlogPostLayout.astro"
 title: Maria Kikot. Changing the career in IT.
 date: 2023-05-09

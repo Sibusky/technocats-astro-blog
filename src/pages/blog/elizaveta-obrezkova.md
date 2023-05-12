@@ -1,4 +1,5 @@
 ---
+id: 04
 layout: "../../layouts/BlogPostLayout.astro"
 title: Elizaveta Obrezkova. My way to IT.
 date: 2023-05-09
