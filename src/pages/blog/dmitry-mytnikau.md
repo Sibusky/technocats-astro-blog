@@ -1,4 +1,5 @@
 ---
+id: 03
 layout: "../../layouts/BlogPostLayout.astro"
 title: Dmitry Mytnikau. Step to IT.
 date: 2023-05-09

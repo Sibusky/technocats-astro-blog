@@ -1,4 +1,5 @@
 ---
+id: 02
 layout: "../../layouts/BlogPostLayout.astro"
 title: Alexander Semenov. Long way to IT.
 date: 2023-05-10
