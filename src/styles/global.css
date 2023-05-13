@@ -836,6 +836,12 @@ header .container {
   grid-auto-flow: column;
 }
 
+@media (max-width: 768px) {
+  .button__container {
+    padding-top: 40px;
+  }
+}
+
 .button {
   width: 63px;
   height: 80px;
@@ -846,7 +852,7 @@ header .container {
   border-radius: 5px;
   border-color: #e6e6e6;
   position: relative;
-  user-select:none;
+  user-select: none;
   transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s;
 }
@@ -866,7 +872,7 @@ header .container {
   position: absolute;
   border-radius: 5px;
   left: 0;
-  top:0;
+  top: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -879,7 +885,7 @@ header .container {
   position: absolute;
   border-radius: 5px;
   left: 0;
-  top:0;
+  top: 0;
   opacity: 1;
   transition: 0s;
 }
