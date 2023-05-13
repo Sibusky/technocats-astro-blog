@@ -8,7 +8,7 @@ image: {
   src: "/images/aleksei-smirnov.jpg",
   alt: "Aleksei Smornov's photo",
 }
-description: Way from electricial to developer!
+description: Way from electrician to developer!
 draft: false
 category: Astro
 ---
