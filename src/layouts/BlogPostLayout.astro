@@ -4,6 +4,7 @@ import PostHeader from "../components/PostHeader.astro";
 import CategoryCloud from "../components/CategoryCloud.astro";
 import MainLayout from "./MainLayout.astro";
 import RelatedPosts from "../components/RelatedPosts.astro";
+import Comments from "../components/Comments.astro";
 
 // util imports
 import { formatBlogPosts } from "../js/utils";
@@ -54,5 +55,6 @@ const relatedPosts = formattedPosts
       }
     </div>
     <Buttons {id} client:load />
+    <Comments/>
   </div>
 </MainLayout>
