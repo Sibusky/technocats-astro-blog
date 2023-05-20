@@ -5,7 +5,7 @@ export default function PersonIcon() {
       width="30"
       height="30"
       fill="currentColor"
-      class="bi bi-person"
+      className="bi bi-person"
       viewBox="0 0 16 16"
     >
       {" "}

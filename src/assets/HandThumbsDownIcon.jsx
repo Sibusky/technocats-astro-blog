@@ -5,7 +5,7 @@ export default function HandThumbsDownIcon() {
       width="16"
       height="16"
       fill="currentColor"
-      class="bi bi-hand-thumbs-down"
+      className="bi bi-hand-thumbs-down"
       viewBox="0 0 16 16"
     >
       {" "}

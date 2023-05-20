@@ -1,7 +1,7 @@
 ---
 // JSX imports
 import Comment from "./Comment";
-import CommentForm from "./CommentForm";
+//import CommentForm from "./CommentForm";
 ---
 
 <section
@@ -11,10 +11,6 @@ import CommentForm from "./CommentForm";
     class="comments"
     style="display: flex; flex-direction: column; gap: 5px; "
   >
-    <Comment />
-    <Comment />
-    <Comment />
+    <Comment client:load />
   </section>
-
-  <CommentForm />
 </section>
