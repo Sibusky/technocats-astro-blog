@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-import { initializeApp } from "firebase/app";
 import {
-  getFirestore,
   doc,
   setDoc,
   getDoc,
   updateDoc,
 } from "firebase/firestore";
+
+import { db } from "../js/firestoreConfig";
 
 export default function Buttons({ id }) {
   const [rating, setRating] = useState({
@@ -18,19 +18,6 @@ export default function Buttons({ id }) {
   const [isLiked, setIsLiked] = useState(false);
   const [isDisliked, setIsDisliked] = useState(false);
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyD9nqE3bvUrZ1RBEJfZq-Q2gvhlVVWa588",
-    authDomain: "blog-rating-22da6.firebaseapp.com",
-    projectId: "blog-rating-22da6",
-    storageBucket: "blog-rating-22da6.appspot.com",
-    messagingSenderId: "341277539245",
-    appId: "1:341277539245:web:65b6889ab30241b11abf24",
-    measurementId: "G-1VZQ0CFXP1",
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
   const docRef = doc(db, "rating", `post-${id}`);
 
   useEffect(() => {
