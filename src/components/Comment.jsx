@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PersonIcon from "../assets/PersonIcon";
-import HandThumbsUpIcon from "../assets/HandThumbsUpIcon";
-import HandThumbsDownIcon from "../assets/HandThumbsDownIcon";
 import CommentButton from "./CommentButton";
 import CommentInput from "./CommentInput";
 
@@ -16,13 +13,12 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
+import Com from "./Com.jsx";
 
 export default function Comment({ id }) {
-  const [commentsList, setCommentsList] = useState([]);
-
   const [author, setAuthor] = useState("");
   const [comment, setComment] = useState("");
-
+  const [fullCom, setFullCom] = useState([]);
   const docRef = doc(db, "comments", `post-${id}`);
   const commentsCollection = collection(docRef, "comments-list");
 
@@ -32,12 +28,15 @@ export default function Comment({ id }) {
 
   async function getComments() {
     const comments = await getDocs(commentsCollection);
-    let commentsList = [];
-    comments.forEach((comment) => {
-      commentsList.push(comment.data());
+    let fullCom = []
+    comments.forEach( (comment) => {
+      fullCom.push({
+        id: comment.id,
+        data: comment.data(),
+      })
       console.log(comment.id);
     });
-    setCommentsList(commentsList.sort((a, b) => a.id - b.id));
+    setFullCom(fullCom);
   }
 
   async function addComment() {
@@ -55,27 +54,10 @@ export default function Comment({ id }) {
 
   return (
     <>
-      {commentsList &&
-        commentsList.map((comment) => {
-          return (
-            <div className="comment" key={comment.id}>
-              <div className="info-about-comment">
-                <PersonIcon />
-                <h4 className="comment-author">{comment.author}</h4>
-                <p>{comment.date}</p>
-              </div>
-              <p className="comment__text">{comment.comment}</p>
-              <div className="comment__buttons">
-                <button type="button" aria-label="Полезно">
-                  <HandThumbsUpIcon likes={comment.likes} />
-                </button>
-                <button type="button" aria-label="Бесполезно">
-                  <HandThumbsDownIcon dislikes={comment.dislikes} />
-                </button>
-              </div>
-            </div>
-          );
-        })}
+      {fullCom.map(com =>  (
+          <Com key={com.id} id={com.id} comment={com.data} postId={id}/>
+        )
+      )}
       <div className="comment-form">
         <h3 className="popup__title">Leave your Comment</h3>
         <form name="comment-form">
