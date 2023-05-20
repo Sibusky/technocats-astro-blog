@@ -2,6 +2,8 @@
 // JSX imports
 import Comment from "./Comment";
 //import CommentForm from "./CommentForm";
+
+const { id } = Astro.props;
 ---
 
 <section
@@ -11,6 +13,6 @@ import Comment from "./Comment";
     class="comments"
     style="display: flex; flex-direction: column; gap: 5px; "
   >
-    <Comment client:load />
+    <Comment {id} client:load />
   </section>
 </section>

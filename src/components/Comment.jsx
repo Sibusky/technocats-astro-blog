@@ -1,67 +1,63 @@
-import React from "react";
-import PersonIcon from "../assets/PersonIcon";
-import HandThumbsUpIcon from "../assets/HandThumbsUpIcon";
-import HandThumbsDownIcon from "../assets/HandThumbsDownIcon";
+import React, { useState, useEffect } from "react";
 import CommentButton from "./CommentButton";
 import CommentInput from "./CommentInput";
 
-export default function Comment() {
-  const [commentsList, setCommentsList] = React.useState([
-    {
-      id: 1,
-      comment: "test comment 1",
-      author: "John Doe",
-      date: "01.01.2020",
-    },
-    { id: 2, comment: "test comment 2", author: "Alisa", date: "01.01.2020" },
-    {
-      id: 3,
-      comment: "test comment 3",
-      author: "Bob",
-      date: new Date().toLocaleDateString(),
-    },
-  ]);
+import {
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  updateDoc,
+  addDoc,
+  collection,
+} from "firebase/firestore";
 
-  const [author, setAuthor] = React.useState("");
-  const [comment, setComment] = React.useState("");
+import { db } from "../js/firestoreConfig";
+import Com from "./Com.jsx";
 
-  const addComment = (e) => {
-    e.preventDefault();
-    //console.log(author);
+export default function Comment({ id }) {
+  const [author, setAuthor] = useState("");
+  const [comment, setComment] = useState("");
+  const [fullCom, setFullCom] = useState([]);
+  const docRef = doc(db, "comments", `post-${id}`);
+  const commentsCollection = collection(docRef, "comments-list");
+
+  useEffect(() => {
+    getComments();
+  }, []);
+
+  async function getComments() {
+    const comments = await getDocs(commentsCollection);
+    let fullCom = []
+    comments.forEach( (comment) => {
+      fullCom.push({
+        id: comment.id,
+        data: comment.data(),
+      })
+      console.log(comment.id);
+    });
+    setFullCom(fullCom);
+  }
+
+  async function addComment() {
     const newComment = {
       id: Date.now(),
       author,
       comment,
       date: new Date().toLocaleDateString(),
+      likes: 0,
+      dislikes: 0,
     };
-    setCommentsList([...commentsList, newComment]);
-    setAuthor("");
-    setComment("");
-  };
+    await addDoc(commentsCollection, newComment);
+    getComments();
+  }
 
   return (
     <>
-      {commentsList &&
-        commentsList.map((comment) => {
-          return (
-            <div className="comment" key={comment.id}>
-              <div className="info-about-comment">
-                <PersonIcon />
-                <h4 className="comment-author">{comment.author}</h4>
-                <p>{comment.date}</p>
-              </div>
-              <p className="comment__text">{comment.comment}</p>
-              <div className="comment__buttons">
-                <button type="button" aria-label="Полезно">
-                  <HandThumbsUpIcon />
-                </button>
-                <button type="button" aria-label="Полезно">
-                  <HandThumbsDownIcon />
-                </button>
-              </div>
-            </div>
-          );
-        })}
+      {fullCom.map(com =>  (
+          <Com key={com.id} id={com.id} comment={com.data} postId={id}/>
+        )
+      )}
       <div className="comment-form">
         <h3 className="popup__title">Leave your Comment</h3>
         <form name="comment-form">
@@ -89,7 +85,12 @@ export default function Comment() {
             ></CommentInput>
             <span id="error-comment-text" className="error-message"></span>
           </div>
-          <CommentButton onClick={addComment}>
+          <CommentButton
+            onClick={(e) => {
+              e.preventDefault();
+              addComment();
+            }}
+          >
             Submit your Comment
           </CommentButton>
         </form>
