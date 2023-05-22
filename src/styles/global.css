@@ -893,3 +893,38 @@ header .container {
 .button:active {
   top: 0.5px;
 }
+
+.comment {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: rgb(243, 229, 199);
+}
+
+.comment__text{
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  background-color: white;
+}
+
+.comment__buttons {
+  margin: 0 auto;
+  width: 100px;
+  height: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+
+.info-about-comment{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 100%;
+}
+
+.comment-form {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.comment-form__button {
+  width: 100px;
+  height: 40px;
+}

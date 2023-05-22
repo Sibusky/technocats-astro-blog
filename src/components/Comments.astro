@@ -1,0 +1,18 @@
+---
+// JSX imports
+import Comment from "./Comment";
+//import CommentForm from "./CommentForm";
+
+const { id } = Astro.props;
+---
+
+<section
+  style="width: 90%; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; grid-row: 3 / 4;"
+>
+  <section
+    class="comments"
+    style="display: flex; flex-direction: column; gap: 5px; "
+  >
+    <Comment {id} client:load />
+  </section>
+</section>
