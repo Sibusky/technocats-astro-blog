@@ -895,11 +895,48 @@ header .container {
 }
 
 .comment {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  background-color: rgb(243, 229, 199);
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2rem rgb(0 0 0 / 30%);
 }
 
-.comment__text{
+.popup__title {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.input-container ::placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.comment__text {
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.2);
   margin: 0 auto;
@@ -914,17 +951,96 @@ header .container {
   grid-template-columns: repeat(2, auto);
 }
 
-.info-about-comment{
+.info-about-comment {
   display: grid;
   grid-template-columns: repeat(3, auto);
   width: 100%;
+  justify-content: start;
 }
 
 .comment-form {
   border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgb(0 0 0 / 60%);
+  border-radius: 10px;
 }
 
 .comment-form__button {
-  width: 100px;
+  width: 100%;
   height: 40px;
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.comment-form__button:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowingbn5 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowingbn5 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.comment-form__button:active {
+  color: #000;
+}
+
+.comment-form__button:active:after {
+  background: transparent;
+}
+
+.comment-form__button:hover:before {
+  opacity: 1;
+}
+
+.comment-form__button:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #191919;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
 }
