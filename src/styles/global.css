@@ -908,11 +908,31 @@ header .container {
   text-align: center;
 }
 
-.input-container {
-  position: relative;
-}
 
 .input-container input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.input-container ::placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.comment__text {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -934,9 +954,7 @@ header .container {
   transition: 0.5s;
 }
 
-/* .comment__text {
- 
-} */
+
 
 .comment__buttons {
   margin: 0 auto;

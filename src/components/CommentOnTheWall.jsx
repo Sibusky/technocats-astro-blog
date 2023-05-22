@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../js/firestoreConfig.js";
 
-const Com = ({id, comment, postId}) => {
+const CommentOnTheWall = ({id, comment, postId}) => {
     const commentId = doc(db, "comments",`post-${postId}`, "comments-list", id)
 
     const handleLikeClick = async () => {
@@ -44,4 +44,4 @@ const Com = ({id, comment, postId}) => {
     );
 };
 
-export default Com;
+export default CommentOnTheWall;

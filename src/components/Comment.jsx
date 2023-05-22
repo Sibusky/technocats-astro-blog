@@ -13,12 +13,13 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
-import Com from "./Com.jsx";
+import CommentOnTheWall from "./CommentOnTheWall.jsx";
 
 export default function Comment({ id }) {
   const [author, setAuthor] = useState("");
   const [comment, setComment] = useState("");
-  const [fullCom, setFullCom] = useState([]);
+  const [fullComment, setFullComment] = useState([]);
+
   const docRef = doc(db, "comments", `post-${id}`);
   const commentsCollection = collection(docRef, "comments-list");
 
@@ -34,9 +35,9 @@ export default function Comment({ id }) {
         id: comment.id,
         data: comment.data(),
       })
-      console.log(comment.id);
+      // console.log(comment.id);
     });
-    setFullCom(fullCom);
+    setFullComment(fullCom.sort((a, b) => a.data.id - b.data.id));
   }
 
   async function addComment() {
@@ -54,8 +55,8 @@ export default function Comment({ id }) {
 
   return (
     <>
-      {fullCom.map(com =>  (
-          <Com key={com.id} id={com.id} comment={com.data} postId={id}/>
+      {fullComment.map(com =>  (
+          <CommentOnTheWall key={com.id} id={com.id} comment={com.data} postId={id}/>
         )
       )}
       <div className="comment-form">
