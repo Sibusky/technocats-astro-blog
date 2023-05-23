@@ -119,6 +119,7 @@ export default function Buttons({ id }) {
           src="https://cdn.jsdelivr.net/gh/twitter/twemoji/assets/svg/1f44d.svg"
           width="30"
           height="30"
+          alt="Кнопка нравится"
         />
         <span className="app-reaction-emoji-count-like">{rating.likes}</span>
       </button>
@@ -133,6 +134,7 @@ export default function Buttons({ id }) {
           src="https://cdn.jsdelivr.net/gh/twitter/twemoji/assets/svg/1f44e.svg"
           width="30"
           height="30"
+          alt="Кнопка не нравится"
         />
         <span className="app-reaction-emoji-count-dislike">
           {rating.dislikes}
