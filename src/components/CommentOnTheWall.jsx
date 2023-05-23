@@ -32,11 +32,11 @@ const CommentOnTheWall = ({id, comment, postId}) => {
                 <p>{comment.date}</p>
             </div>
             <p className="comment__text">{comment.comment}</p>
-            <div className="comment__buttons">
-                <button onClick={handleLikeClick} type="button" aria-label="Полезно">
+            <div className="comment__likebuttons">
+                <button onClick={handleLikeClick} className="comment__like" type="button" aria-label="Полезно">
                     <HandThumbsUpIcon likes={comment.likes} />
                 </button>
-                <button onClick={handleDisLikeClick} type="button" aria-label="Бесполезно">
+                <button onClick={handleDisLikeClick} className="comment__like" type="button" aria-label="Бесполезно">
                     <HandThumbsDownIcon dislikes={comment.dislikes} />
                 </button>
             </div>

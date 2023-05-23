@@ -60,7 +60,6 @@ export default function Comment({ id }) {
         )
       )}
       <div className="comment-form">
-        <h3 className="popup__title">Leave your Comment</h3>
         <form name="comment-form">
           <div className="input-container">
             <CommentInput
@@ -92,7 +91,7 @@ export default function Comment({ id }) {
               addComment();
             }}
           >
-            Submit your Comment
+            <span>Add your Comment</span>
           </CommentButton>
         </form>
       </div>
