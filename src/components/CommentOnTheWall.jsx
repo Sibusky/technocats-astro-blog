@@ -19,7 +19,7 @@ const CommentOnTheWall = ({
     <div className="comment" key={comment.id}>
       <div className="info-about-comment">
         <PersonIcon />
-        <h4 className="comment-author">{comment.author}</h4>
+        <h3 className="comment-author">{comment.author}</h3>
         <p>{comment.date}</p>
       </div>
       <p className="comment__text">{comment.comment}</p>
