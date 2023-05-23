@@ -38,6 +38,7 @@ export default function Buttons({ id }) {
 
   async function getRating() {
     const rating = await getDoc(docRef);
+    console.log(rating.data())
     if (rating.exists()) {
       setRating({
         likes: rating.data().likes,

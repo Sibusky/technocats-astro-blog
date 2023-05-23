@@ -18,10 +18,11 @@ import CommentOnTheWall from "./CommentOnTheWall.jsx";
 export default function Comment({ id }) {
   const [author, setAuthor] = useState("");
   const [comment, setComment] = useState("");
-  const [fullComment, setFullComment] = useState([]);
+  const [fullComments, setFullComments] = useState([]);
 
   const docRef = doc(db, "comments", `post-${id}`);
   const commentsCollection = collection(docRef, "comments-list");
+  // const commentRef = doc(docRef, 'comment-list', `${}`)
 
   useEffect(() => {
     getComments();
@@ -29,15 +30,15 @@ export default function Comment({ id }) {
 
   async function getComments() {
     const comments = await getDocs(commentsCollection);
-    let fullCom = []
-    comments.forEach( (comment) => {
+    let fullCom = [];
+    comments.forEach((comment) => {
       fullCom.push({
         id: comment.id,
         data: comment.data(),
-      })
+      });
       // console.log(comment.id);
     });
-    setFullComment(fullCom.sort((a, b) => a.data.id - b.data.id));
+    setFullComments(fullCom.sort((a, b) => a.data.id - b.data.id));
   }
 
   async function addComment() {
@@ -53,12 +54,35 @@ export default function Comment({ id }) {
     getComments();
   }
 
+  async function handleLikeClick(commentId) {
+    const commentRef = doc(db, "comments", `post-${id}`, "comments-list", commentId);
+    // const comment = fullComments.filter(comment => comment.id === commentId )
+
+    const rating = await getDoc(commentRef);
+
+    console.log(rating.data())
+    
+
+  }
+
+  function handleDisLikeClick() {
+    console.log("dislike");
+  }
+
   return (
     <>
-      {fullComment.map(com =>  (
-          <CommentOnTheWall key={com.id} id={com.id} comment={com.data} postId={id}/>
-        )
-      )}
+      {fullComments.map((com) => (
+        <CommentOnTheWall
+          key={com.id}
+          id={com.id}
+          comment={com.data}
+          postId={id}
+          handleLikeClick={() => handleLikeClick(com.id)}
+          handleDisLikeClick={handleDisLikeClick}
+          likes={com.likes}
+          dislikes={com.dislikes}
+        />
+      ))}
       <div className="comment-form">
         <h3 className="popup__title">Leave your Comment</h3>
         <form name="comment-form">
