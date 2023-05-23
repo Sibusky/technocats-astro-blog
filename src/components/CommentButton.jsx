@@ -1,8 +1,8 @@
 import React from "react";
 
-const CommentButton = ({children, className, ...props}) => {
+const CommentButton = ({children, className, disabled, ...props}) => {
   return (
-    <button {...props} className={className} type="submit">
+    <button {...props} className={className} type="submit" disabled={disabled}>
       {children}
     </button>
   )

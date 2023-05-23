@@ -165,6 +165,7 @@ export default function Comment({ id }) {
               e.preventDefault();
               addComment();
             }}
+            disabled={isValid ? false : true}
             className={isValid ? "link secondary filled comment_button" : "link secondary comment_button_inactive"}
           >
             <span>Add your Comment</span>
