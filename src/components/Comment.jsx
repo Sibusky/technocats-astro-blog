@@ -134,6 +134,7 @@ export default function Comment({ id }) {
         <form name="comment-form">
           <div className="input-container">
             <CommentInput
+              tag="input"
               value={values.author}
               onChange={handleChange}
               id="name-author"
@@ -142,13 +143,14 @@ export default function Comment({ id }) {
               placeholder="Name"
               required
               minLength="2"
-              maxLength="40"
-              pattern='^[А-Яа-яa-zA-ZёЁ\s\-]+'
+              maxLength="30"
+              pattern='^[А-Яа-яa-zA-ZёЁ][А-Яа-яa-zA-ZёЁ\s\-]+'
             ></CommentInput>
             <span id="error-name-author" className="error-message">{errors.author}</span>
           </div>
           <div className="input-container">
             <CommentInput
+              tag="textarea"
               value={values.comment}
               onChange={handleChange}
               id="comment-text"
@@ -156,7 +158,7 @@ export default function Comment({ id }) {
               type="text"
               placeholder="Your Comment"
               required
-              minLength="2"
+              minLength="20"
               maxLength="500"
             ></CommentInput>
             <span id="error-comment-text" className="error-message">{errors.comment}</span>
