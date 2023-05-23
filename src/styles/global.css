@@ -932,6 +932,14 @@ header .container {
   background: transparent;
 }
 
+.input-container textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #a5a5a5;
+  outline: none;
+  background: transparent;
+}
+
 .input-container ::placeholder {
   position: absolute;
   top: 0;
@@ -953,12 +961,12 @@ header .container {
 }
 
 .comment_button_inactive {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   color: #252525;
   cursor: default;
 }
 
-.comment__likebuttons{
+.comment__likebuttons {
   width: 100px;
   height: 50px;
   display: grid;
