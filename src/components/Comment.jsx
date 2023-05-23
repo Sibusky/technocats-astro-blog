@@ -22,7 +22,6 @@ export default function Comment({ id }) {
 
   const docRef = doc(db, "comments", `post-${id}`);
   const commentsCollection = collection(docRef, "comments-list");
-  // const commentRef = doc(docRef, 'comment-list', `${}`)
 
   useEffect(() => {
     getComments();
@@ -36,12 +35,17 @@ export default function Comment({ id }) {
         id: comment.id,
         data: comment.data(),
       });
-      // console.log(comment.id);
     });
     setFullComments(fullCom.sort((a, b) => a.data.id - b.data.id));
   }
 
   async function addComment() {
+    const commentsRef = await getDoc(docRef);
+    // if doc doesn't exist, create one
+    if (!commentsRef.exists()) {
+      await setDoc(docRef, {});
+    }
+
     const newComment = {
       id: Date.now(),
       author,
@@ -55,18 +59,53 @@ export default function Comment({ id }) {
   }
 
   async function handleLikeClick(commentId) {
-    const commentRef = doc(db, "comments", `post-${id}`, "comments-list", commentId);
-    // const comment = fullComments.filter(comment => comment.id === commentId )
-
+    const commentRef = doc(commentsCollection, commentId);
     const rating = await getDoc(commentRef);
+    const lastVote = localStorage.getItem(`post-${id}-${commentId}-lastVote`);
 
-    console.log(rating.data())
-    
-
+    if (!lastVote) {
+      localStorage.setItem(`post-${id}-${commentId}-lastVote`, "liked");
+      const newRating = {
+        likes: ++rating.data().likes,
+      };
+      await updateDoc(commentRef, newRating);
+    } else if (lastVote === "liked") {
+      return;
+    } else if (lastVote === "disliked") {
+      localStorage.removeItem(`post-${id}-${commentId}-lastVote`);
+      localStorage.setItem(`post-${id}-${commentId}-lastVote`, "liked");
+      const newRating = {
+        likes: ++rating.data().likes,
+        dislikes: --rating.data().dislikes,
+      };
+      await updateDoc(commentRef, newRating);
+    }
+    getComments();
   }
 
-  function handleDisLikeClick() {
-    console.log("dislike");
+  async function handleDisLikeClick(commentId) {
+    const commentRef = doc(commentsCollection, commentId);
+    const rating = await getDoc(commentRef);
+    const lastVote = localStorage.getItem(`post-${id}-${commentId}-lastVote`);
+
+    if (!lastVote) {
+      localStorage.setItem(`post-${id}-${commentId}-lastVote`, "disliked");
+      const newRating = {
+        dislikes: ++rating.data().dislikes,
+      };
+      await updateDoc(commentRef, newRating);
+    } else if (lastVote === "disliked") {
+      return;
+    } else if (lastVote === "liked") {
+      localStorage.removeItem(`post-${id}-${commentId}-lastVote`);
+      localStorage.setItem(`post-${id}-${commentId}-lastVote`, "dislike");
+      const newRating = {
+        likes: --rating.data().likes,
+        dislikes: ++rating.data().dislikes,
+      };
+      await updateDoc(commentRef, newRating);
+    }
+    getComments();
   }
 
   return (
@@ -78,7 +117,7 @@ export default function Comment({ id }) {
           comment={com.data}
           postId={id}
           handleLikeClick={() => handleLikeClick(com.id)}
-          handleDisLikeClick={handleDisLikeClick}
+          handleDisLikeClick={() => handleDisLikeClick(com.id)}
           likes={com.likes}
           dislikes={com.dislikes}
         />
