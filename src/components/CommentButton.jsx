@@ -1,8 +1,8 @@
 import React from "react";
 
-const CommentButton = ({children, ...props}) => {
+const CommentButton = ({children, className, ...props}) => {
   return (
-    <button {...props} className="link secondary filled comment_button" type="submit">
+    <button {...props} className={className} type="submit">
       {children}
     </button>
   )
