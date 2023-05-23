@@ -156,7 +156,7 @@ export default function Comment({ id }) {
               id="comment-text"
               name="comment"
               type="text"
-              placeholder="Your Comment"
+              placeholder="Here you can leave your comment and share your impressions"
               required
               minLength="20"
               maxLength="500"
