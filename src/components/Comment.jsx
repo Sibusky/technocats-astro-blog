@@ -68,8 +68,6 @@ export default function Comment({ id }) {
     const rating = await getDoc(commentRef);
     const lastVote = localStorage.getItem(`post-${id}-${commentId}-lastVote`);
 
-    console.log("lastVote", commentId);
-
     if (!lastVote) {
       localStorage.setItem(`post-${id}-${commentId}-lastVote`, "liked");
       const newRating = {
@@ -79,8 +77,6 @@ export default function Comment({ id }) {
     } else if (lastVote === "liked") {
       return;
     } else if (lastVote === "disliked") {
-      console.log("dislike true");
-
       localStorage.removeItem(`post-${id}-${commentId}-lastVote`);
       localStorage.setItem(`post-${id}-${commentId}-lastVote`, "liked");
       const newRating = {
