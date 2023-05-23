@@ -40,6 +40,9 @@ export default function Comment({ id }) {
   }
 
   async function addComment() {
+    if (!(author && comment)) {
+      return;
+    }
     const commentsRef = await getDoc(docRef);
     // if doc doesn't exist, create one
     if (!commentsRef.exists()) {
@@ -56,6 +59,8 @@ export default function Comment({ id }) {
     };
     await addDoc(commentsCollection, newComment);
     getComments();
+    setComment('');
+    setAuthor('')
   }
 
   async function handleLikeClick(commentId) {
