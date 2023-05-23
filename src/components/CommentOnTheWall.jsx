@@ -5,24 +5,16 @@ import React, { useEffect, useState } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../js/firestoreConfig.js";
 
-const CommentOnTheWall = ({id, comment, postId}) => {
-    const commentId = doc(db, "comments",`post-${postId}`, "comments-list", id)
-
-    const handleLikeClick = async () => {
-        const rating = await getDoc(commentId)
-        const likes = {
-            likes: rating.data().likes + 1
-        }
-        await updateDoc(commentId, likes)
-    }
-
-    const handleDisLikeClick = async () => {
-        const rating = await getDoc(commentId)
-        const dislikes = {
-            dislikes: rating.data().dislikes - 1
-        }
-        await updateDoc(commentId, dislikes)
-    }
+const CommentOnTheWall = ({
+  id,
+  comment,
+  postId,
+  handleLikeClick,
+  handleDisLikeClick,
+  likes,
+  dislikes,
+}) => {
+  const commentId = doc(db, "comments", `post-${postId}`, "comments-list", id);
 
     return (
         <div className="comment" key={comment.id}>
