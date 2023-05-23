@@ -143,6 +143,7 @@ export default function Comment({ id }) {
               required
               minLength="2"
               maxLength="40"
+              pattern='^[А-Яа-яa-zA-ZёЁ\s\-]+'
             ></CommentInput>
             <span id="error-name-author" className="error-message">{errors.author}</span>
           </div>
