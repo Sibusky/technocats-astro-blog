@@ -1,0 +1,47 @@
+---
+import { collection, doc, getDocs } from "firebase/firestore";
+import { db } from "../js/firestoreConfig.js";
+import PersonIcon from "../assets/PersonIcon.jsx";
+import HandThumbsUpIcon from "../assets/HandThumbsUpIcon.jsx";
+import HandThumbsDownIcon from "../assets/HandThumbsDownIcon.jsx";
+
+const { id } = Astro.props;
+
+const docRef = doc(db, "comments", `post-${id}`);
+const commentsCollection = collection(docRef, "comments-list");
+const commentsByFirestone = await getDocs(commentsCollection);
+
+const comments = [];
+commentsByFirestone.forEach((comment) => {
+  comments.push(comment.data())
+});
+
+export const prerender = true;
+---
+
+{comments.map(comment=> (
+    <div class="comment">
+        <div class="info-about-comment">
+            <PersonIcon/>
+            <h4 class="comment-author">{comment.author}</h4>
+            <p>{comment.date}</p>
+        </div>
+        <p class="comment__text">{comment.comment}</p>
+        <div class="comment__likebuttons">
+            <button
+              class="comment__like"
+              type="button"
+              aria-label="Полезно"
+            >
+                <HandThumbsUpIcon likes={comment.likes}/>
+            </button>
+            <button
+              class="comment__like"
+              type="button"
+              aria-label="Бесполезно"
+            >
+                <HandThumbsDownIcon dislikes={comment.dislikes}/>
+            </button>
+        </div>
+    </div>
+  ))}
