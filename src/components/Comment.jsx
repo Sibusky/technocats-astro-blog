@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CommentButton from "./CommentButton";
 import CommentInput from "./CommentInput";
+import useFormWithValidation from './FormValidator';
 
 import {
   doc,
@@ -16,6 +17,9 @@ import { db } from "../js/firestoreConfig";
 import CommentOnTheWall from "./CommentOnTheWall.jsx";
 
 export default function Comment({ id }) {
+
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+
   const [author, setAuthor] = useState("");
   const [comment, setComment] = useState("");
   const [fullComments, setFullComments] = useState([]);
@@ -40,7 +44,7 @@ export default function Comment({ id }) {
   }
 
   async function addComment() {
-    if (!(author && comment)) {
+    if (!(values.author && values.comment)) {
       return;
     }
     const commentsRef = await getDoc(docRef);
@@ -51,24 +55,21 @@ export default function Comment({ id }) {
 
     const newComment = {
       id: Date.now(),
-      author,
-      comment,
+      author: values.author,
+      comment: values.comment,
       date: new Date().toLocaleDateString(),
       likes: 0,
       dislikes: 0,
     };
     await addDoc(commentsCollection, newComment);
     getComments();
-    setComment('');
-    setAuthor('')
+    resetForm();
   }
 
   async function handleLikeClick(commentId) {
     const commentRef = doc(commentsCollection, commentId);
     const rating = await getDoc(commentRef);
     const lastVote = localStorage.getItem(`post-${id}-${commentId}-lastVote`);
-
-    console.log("lastVote", commentId);
 
     if (!lastVote) {
       localStorage.setItem(`post-${id}-${commentId}-lastVote`, "liked");
@@ -79,8 +80,6 @@ export default function Comment({ id }) {
     } else if (lastVote === "liked") {
       return;
     } else if (lastVote === "disliked") {
-      console.log("dislike true");
-
       localStorage.removeItem(`post-${id}-${commentId}-lastVote`);
       localStorage.setItem(`post-${id}-${commentId}-lastVote`, "liked");
       const newRating = {
@@ -135,33 +134,42 @@ export default function Comment({ id }) {
         <form name="comment-form">
           <div className="input-container">
             <CommentInput
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
+              tag="input"
+              value={values.author}
+              onChange={handleChange}
               id="name-author"
-              name="name-author"
+              name="author"
               type="text"
               placeholder="Name"
               required
+              minLength="2"
+              maxLength="30"
+              pattern='^[А-Яа-яa-zA-ZёЁ][А-Яа-яa-zA-ZёЁ\s\-]+'
             ></CommentInput>
-            <span id="error-name-author" className="error-message"></span>
+            <span id="error-name-author" className="error-message">{errors.author}</span>
           </div>
           <div className="input-container">
             <CommentInput
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
+              tag="textarea"
+              value={values.comment}
+              onChange={handleChange}
               id="comment-text"
-              name="comment-text"
+              name="comment"
               type="text"
-              placeholder="Your Comment"
+              placeholder="Here you can leave your comment and share your impressions"
               required
+              minLength="20"
+              maxLength="500"
             ></CommentInput>
-            <span id="error-comment-text" className="error-message"></span>
+            <span id="error-comment-text" className="error-message">{errors.comment}</span>
           </div>
           <CommentButton
             onClick={(e) => {
               e.preventDefault();
               addComment();
             }}
+            disabled={isValid ? false : true}
+            className={isValid ? "link secondary filled comment_button" : "link secondary comment_button_inactive"}
           >
             <span>Add your Comment</span>
           </CommentButton>

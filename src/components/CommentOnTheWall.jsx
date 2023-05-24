@@ -1,20 +1,13 @@
 import PersonIcon from "../assets/PersonIcon.jsx";
 import HandThumbsUpIcon from "../assets/HandThumbsUpIcon.jsx";
 import HandThumbsDownIcon from "../assets/HandThumbsDownIcon.jsx";
-import React, { useEffect, useState } from "react";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { db } from "../js/firestoreConfig.js";
+import React from "react";
 
 const CommentOnTheWall = ({
-  // id,
   comment,
-  // postId,
   handleLikeClick,
   handleDisLikeClick,
-  // likes,
-  // dislikes,
 }) => {
-
   return (
     <div className="comment" key={comment.id}>
       <div className="info-about-comment">
