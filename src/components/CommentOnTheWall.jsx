@@ -3,11 +3,14 @@ import HandThumbsUpIcon from "../assets/HandThumbsUpIcon.jsx";
 import HandThumbsDownIcon from "../assets/HandThumbsDownIcon.jsx";
 import React from "react";
 
-const CommentOnTheWall = ({
+// SSR export
+export const prerender = false;
+
+export function CommentOnTheWall({
   comment,
   handleLikeClick,
   handleDisLikeClick,
-}) => {
+}) {
   return (
     <div className="comment" key={comment.id}>
       <div className="info-about-comment">
@@ -36,6 +39,4 @@ const CommentOnTheWall = ({
       </div>
     </div>
   );
-};
-
-export default CommentOnTheWall;
+}
