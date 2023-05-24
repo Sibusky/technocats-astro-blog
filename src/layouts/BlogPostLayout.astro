@@ -1,4 +1,7 @@
 ---
+// SSR export
+export const prerender = false;
+
 // component import
 import PostHeader from "../components/PostHeader.astro";
 import CategoryCloud from "../components/CategoryCloud.astro";
@@ -55,6 +58,6 @@ const relatedPosts = formattedPosts
       }
     </div>
     <Buttons {id} client:load />
-    <Comments {id}/>
+    <Comments {id} />
   </div>
 </MainLayout>
