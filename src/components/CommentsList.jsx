@@ -14,9 +14,11 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
-import CommentOnTheWall from "./CommentOnTheWall.jsx";
+import { CommentOnTheWall } from "./CommentOnTheWall.jsx";
 
-export default function Comment({ id }) {
+export const prerender = false;
+
+export function CommentsList({ id }) {
 
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
