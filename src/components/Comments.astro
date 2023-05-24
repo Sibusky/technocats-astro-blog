@@ -1,11 +1,7 @@
 ---
-// SSR export
-export const prerender = false;
-
-// JSX imports
-import { CommentsList } from "./CommentsList";
-
+export const prerender = true;
 const { id } = Astro.props;
+import CommentsSSR from "./CommentsSSR.astro";
 ---
 
 <section
@@ -16,6 +12,6 @@ const { id } = Astro.props;
     class="comments"
     style="display: flex; flex-direction: column; gap: 5px; "
   >
-    <CommentsList {id} client:load />
+    <CommentsSSR id={id} />
   </section>
 </section>
