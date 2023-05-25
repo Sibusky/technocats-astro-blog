@@ -15,8 +15,8 @@ import {
 
 import { db } from "../js/firestoreConfig";
 import { CommentOnTheWall } from "./CommentOnTheWall.jsx";
+import CommentButtons from "./CommentButtons.jsx";
 
-export const prerender = false;
 
 export function CommentsList({ id }) {
 
@@ -68,70 +68,9 @@ export function CommentsList({ id }) {
     resetForm();
   }
 
-  async function handleLikeClick(commentId) {
-    const commentRef = doc(commentsCollection, commentId);
-    const rating = await getDoc(commentRef);
-    const lastVote = localStorage.getItem(`post-${id}-${commentId}-lastVote`);
-
-    if (!lastVote) {
-      localStorage.setItem(`post-${id}-${commentId}-lastVote`, "liked");
-      const newRating = {
-        likes: ++rating.data().likes,
-      };
-      await updateDoc(commentRef, newRating);
-    } else if (lastVote === "liked") {
-      return;
-    } else if (lastVote === "disliked") {
-      localStorage.removeItem(`post-${id}-${commentId}-lastVote`);
-      localStorage.setItem(`post-${id}-${commentId}-lastVote`, "liked");
-      const newRating = {
-        likes: ++rating.data().likes,
-        dislikes: --rating.data().dislikes,
-      };
-      await updateDoc(commentRef, newRating);
-    }
-    getComments();
-  }
-
-  async function handleDisLikeClick(commentId) {
-    const commentRef = doc(commentsCollection, commentId);
-    const rating = await getDoc(commentRef);
-    const lastVote = localStorage.getItem(`post-${id}-${commentId}-lastVote`);
-
-    if (!lastVote) {
-      localStorage.setItem(`post-${id}-${commentId}-lastVote`, "disliked");
-      const newRating = {
-        dislikes: ++rating.data().dislikes,
-      };
-      await updateDoc(commentRef, newRating);
-    } else if (lastVote === "disliked") {
-      return;
-    } else if (lastVote === "liked") {
-      localStorage.removeItem(`post-${id}-${commentId}-lastVote`);
-      localStorage.setItem(`post-${id}-${commentId}-lastVote`, "disliked");
-      const newRating = {
-        likes: --rating.data().likes,
-        dislikes: ++rating.data().dislikes,
-      };
-      await updateDoc(commentRef, newRating);
-    }
-    getComments();
-  }
 
   return (
     <>
-      {fullComments.map((com) => (
-        <CommentOnTheWall
-          key={com.id}
-          id={com.id}
-          comment={com.data}
-          postId={id}
-          handleLikeClick={() => handleLikeClick(com.id)}
-          handleDisLikeClick={() => handleDisLikeClick(com.id)}
-          likes={com.likes}
-          dislikes={com.dislikes}
-        />
-      ))}
       <div className="comment-form">
         <form name="comment-form">
           <div className="input-container">
