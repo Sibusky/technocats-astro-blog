@@ -1,5 +1,5 @@
 import { g as createVNode, s as spreadAttributes, F as Fragment } from '../astro.f03c80ea.mjs';
-import { $ as $$BlogPostLayout } from './aleksei-smirnov.md.3366715d.mjs';
+import { $ as $$BlogPostLayout } from './aleksei-smirnov.md.63ed0e84.mjs';
 
 const images = {
 					
@@ -15,10 +15,10 @@ const images = {
 				const html = updateImageReferences("<p>Hi, there 👋!</p>\n<p>My name is Dmitry Mytnikau. I worked as a HTML layout designer for over than three years. Since last year switched to the stack of React, Redux Toolkit, TypeScript, and Tailwind. Deepening my knowledge in TypeScript and the features of Tailwind. Recently became interested in SSR. I want to keep up with modern development practices and write multifunctional typed code.</p>\n<p>Fun fact about me: medical professionals forbid me from coding.</p>");
 
 				const frontmatter = {"id":3,"layout":"../../layouts/BlogPostLayout.astro","title":"Dmitry Mytnikau. Step to IT.","date":"2023-05-09T00:00:00.000Z","author":"Dmitry Mytnikau","image":{"src":"/images/dmitry_mytnikau.jpg","alt":"Dmitry Mytnikau's photo"},"description":"From HTML layout designer to Web-developer.","draft":false,"category":"Astro"};
-				const file = "D:/webWork/intern/projects/birka/src/pages/blog/dmitry-mytnikau.md";
+				const file = "/Users/Sibusky/dev/birka/src/pages/blog/dmitry-mytnikau.md";
 				const url = "/blog/dmitry-mytnikau";
 				function rawContent() {
-					return "\r\nHi, there 👋!\r\n\r\nMy name is Dmitry Mytnikau. I worked as a HTML layout designer for over than three years. Since last year switched to the stack of React, Redux Toolkit, TypeScript, and Tailwind. Deepening my knowledge in TypeScript and the features of Tailwind. Recently became interested in SSR. I want to keep up with modern development practices and write multifunctional typed code.\r\n\r\nFun fact about me: medical professionals forbid me from coding.\r\n\r\n";
+					return "\nHi, there 👋!\n\nMy name is Dmitry Mytnikau. I worked as a HTML layout designer for over than three years. Since last year switched to the stack of React, Redux Toolkit, TypeScript, and Tailwind. Deepening my knowledge in TypeScript and the features of Tailwind. Recently became interested in SSR. I want to keep up with modern development practices and write multifunctional typed code.\n\nFun fact about me: medical professionals forbid me from coding.\n\n";
 				}
 				function compiledContent() {
 					return html;

@@ -141,7 +141,7 @@ ${robots && renderTemplate`<meta name="robots" content="noindex, nofollow">`}
 
 <!-- JSON LD -->
 ${renderComponent($$result, "Fragment", Fragment, {}, { "default": ($$result2) => renderTemplate`${unescapeHTML(jsonLD)}` })}`;
-}, "D:/webWork/intern/projects/birka/src/components/Seo.astro");
+}, "/Users/Sibusky/dev/birka/src/components/Seo.astro");
 
 const $$Astro$9 = createAstro("https://astro-tehnocats.netlify.app/");
 const $$MainHead = createComponent(async ($$result, $$props, $$slots) => {
@@ -160,9 +160,9 @@ const $$MainHead = createComponent(async ($$result, $$props, $$slots) => {
 
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 ${renderHead($$result)}</head>`;
-}, "D:/webWork/intern/projects/birka/src/layouts/MainHead.astro");
+}, "/Users/Sibusky/dev/birka/src/layouts/MainHead.astro");
 
-const __vite_glob_1_0 = "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\">\r\n    <title>pawprint4-glyph</title>\r\n    <path\r\n        d=\"M59,325.39c5.93,21.09-2,41.76-17.77,46.22S7.91,362.57,2,341.47s2-41.78,17.77-46.22S53.08,304.28,59,325.39Z\"\r\n        fill=\"#5b5b5f\" />\r\n    <path\r\n        d=\"M98.72,257c5.83,20.66-1.74,40.84-16.9,45.15s-32.19-9-38-29.65,1.77-40.83,16.93-45.13S92.89,236.42,98.72,257Z\"\r\n        fill=\"#5b5b5f\" />\r\n    <path\r\n        d=\"M168.85,245.89c5.93,21.09-1.37,41.62-16.35,45.84s-31.9-9.47-37.89-30.53S116,219.61,131,215.36,162.89,224.81,168.85,245.89Z\"\r\n        fill=\"#5b5b5f\" />\r\n    <path\r\n        d=\"M236.9,291.43c5.62,20-2.56,39.76-18.27,44.19s-33-8.16-38.68-28.11,2.53-39.76,18.27-44.2S231.26,271.46,236.9,291.43Z\"\r\n        fill=\"#5b5b5f\" />\r\n    <path\r\n        d=\"M97.58,447.24s-49,15-46.33-48A179.93,179.93,0,0,1,76.65,357.8s13.58-21.75,16-29.58c0,0,16.19-41.5,53.79-11.57,0,0,31.56,30.39,43.66,33.64,0,0,41.05,25,20.67,62.26,0,0-20,22.66-38,13C172.78,425.54,128.33,405.36,97.58,447.24Z\"\r\n        fill=\"#5b5b5f\" />\r\n    <path\r\n        d=\"M336.91,150.43c-4.11,21.52-20.49,36.48-36.6,33.38s-25.73-23-21.62-44.53,20.49-36.45,36.57-33.37S341,128.92,336.91,150.43Z\"\r\n        fill=\"#5b5b5f\" />\r\n    <path\r\n        d=\"M403,107.1c-4,21.08-19.85,35.75-35.33,32.79S342.9,117.44,347,96.37s19.83-35.75,35.3-32.8S407,86,403,107.1Z\"\r\n        fill=\"#5b5b5f\" />\r\n    <path\r\n        d=\"M470.7,128.54c-4.14,21.5-19.85,36.57-35.15,33.64s-24.31-22.74-20.17-44.24,19.83-36.61,35.12-33.68S474.81,107,470.7,128.54Z\"\r\n        fill=\"#5b5b5f\" />\r\n    <path\r\n        d=\"M511.15,199.67c-3.9,20.41-20,34.42-36.12,31.36S449.13,209,453,188.56s20.09-34.39,36.15-31.32S515,179.32,511.15,199.67Z\"\r\n        fill=\"#5b5b5f\" />\r\n    <path\r\n        d=\"M316.82,276.66s-50.47-8.48-19.93-63.65a179.79,179.79,0,0,1,41.26-25.71S360,173.94,365.73,168c0,0,33-29.85,53.29,13.74,0,0,14.61,41.32,24,49.65,0,0,25.5,40.75-9.39,64.93,0,0-28.05,11.3-39.84-5.4C393.79,290.92,363,253,316.82,276.66Z\"\r\n        fill=\"#5b5b5f\" />\r\n</svg>";
+const __vite_glob_1_0 = "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\">\n    <title>pawprint4-glyph</title>\n    <path\n        d=\"M59,325.39c5.93,21.09-2,41.76-17.77,46.22S7.91,362.57,2,341.47s2-41.78,17.77-46.22S53.08,304.28,59,325.39Z\"\n        fill=\"#5b5b5f\" />\n    <path\n        d=\"M98.72,257c5.83,20.66-1.74,40.84-16.9,45.15s-32.19-9-38-29.65,1.77-40.83,16.93-45.13S92.89,236.42,98.72,257Z\"\n        fill=\"#5b5b5f\" />\n    <path\n        d=\"M168.85,245.89c5.93,21.09-1.37,41.62-16.35,45.84s-31.9-9.47-37.89-30.53S116,219.61,131,215.36,162.89,224.81,168.85,245.89Z\"\n        fill=\"#5b5b5f\" />\n    <path\n        d=\"M236.9,291.43c5.62,20-2.56,39.76-18.27,44.19s-33-8.16-38.68-28.11,2.53-39.76,18.27-44.2S231.26,271.46,236.9,291.43Z\"\n        fill=\"#5b5b5f\" />\n    <path\n        d=\"M97.58,447.24s-49,15-46.33-48A179.93,179.93,0,0,1,76.65,357.8s13.58-21.75,16-29.58c0,0,16.19-41.5,53.79-11.57,0,0,31.56,30.39,43.66,33.64,0,0,41.05,25,20.67,62.26,0,0-20,22.66-38,13C172.78,425.54,128.33,405.36,97.58,447.24Z\"\n        fill=\"#5b5b5f\" />\n    <path\n        d=\"M336.91,150.43c-4.11,21.52-20.49,36.48-36.6,33.38s-25.73-23-21.62-44.53,20.49-36.45,36.57-33.37S341,128.92,336.91,150.43Z\"\n        fill=\"#5b5b5f\" />\n    <path\n        d=\"M403,107.1c-4,21.08-19.85,35.75-35.33,32.79S342.9,117.44,347,96.37s19.83-35.75,35.3-32.8S407,86,403,107.1Z\"\n        fill=\"#5b5b5f\" />\n    <path\n        d=\"M470.7,128.54c-4.14,21.5-19.85,36.57-35.15,33.64s-24.31-22.74-20.17-44.24,19.83-36.61,35.12-33.68S474.81,107,470.7,128.54Z\"\n        fill=\"#5b5b5f\" />\n    <path\n        d=\"M511.15,199.67c-3.9,20.41-20,34.42-36.12,31.36S449.13,209,453,188.56s20.09-34.39,36.15-31.32S515,179.32,511.15,199.67Z\"\n        fill=\"#5b5b5f\" />\n    <path\n        d=\"M316.82,276.66s-50.47-8.48-19.93-63.65a179.79,179.79,0,0,1,41.26-25.71S360,173.94,365.73,168c0,0,33-29.85,53.29,13.74,0,0,14.61,41.32,24,49.65,0,0,25.5,40.75-9.39,64.93,0,0-28.05,11.3-39.84-5.4C393.79,290.92,363,253,316.82,276.66Z\"\n        fill=\"#5b5b5f\" />\n</svg>";
 
 const SPRITESHEET_NAMESPACE = `astroicon`;
 
@@ -397,7 +397,7 @@ ${e}`);
     }
   }
   return renderTemplate`${maybeRenderHead($$result)}<svg${spreadAttributes(props)}${addAttribute(name, "astro-icon")}>${unescapeHTML((title ? `<title>${title}</title>` : "") + innerHTML)}</svg>`;
-}, "D:/webWork/intern/projects/birka/node_modules/astro-icon/lib/Icon.astro");
+}, "/Users/Sibusky/dev/birka/node_modules/astro-icon/lib/Icon.astro");
 
 const sprites = /* @__PURE__ */ new WeakMap();
 function trackSprite(request, name) {
@@ -440,7 +440,7 @@ ${e}`);
   return renderTemplate`${maybeRenderHead($$result)}<svg${addAttribute(`position: absolute; width: 0; height: 0; overflow: hidden; ${style ?? ""}`.trim(), "style")}${spreadAttributes({ "aria-hidden": true, ...props })} astro-icon-spritesheet>
     ${icons.map((icon) => renderTemplate`<symbol${spreadAttributes(icon.props)}${addAttribute(`${SPRITESHEET_NAMESPACE}:${icon.name}`, "id")}>${unescapeHTML(icon.innerHTML)}</symbol>`)}
 </svg>`;
-}, "D:/webWork/intern/projects/birka/node_modules/astro-icon/lib/Spritesheet.astro");
+}, "/Users/Sibusky/dev/birka/node_modules/astro-icon/lib/Spritesheet.astro");
 
 const $$Astro$6 = createAstro("https://astro-tehnocats.netlify.app/");
 const $$SpriteProvider = createComponent(async ($$result, $$props, $$slots) => {
@@ -449,7 +449,7 @@ const $$SpriteProvider = createComponent(async ($$result, $$props, $$slots) => {
   const content = await Astro2.slots.render("default");
   return renderTemplate`${renderComponent($$result, "Fragment", Fragment, {}, { "default": ($$result2) => renderTemplate`${unescapeHTML(content)}` })}
 ${renderComponent($$result, "Spritesheet", $$Spritesheet, {})}`;
-}, "D:/webWork/intern/projects/birka/node_modules/astro-icon/lib/SpriteProvider.astro");
+}, "/Users/Sibusky/dev/birka/node_modules/astro-icon/lib/SpriteProvider.astro");
 
 const $$Astro$5 = createAstro("https://astro-tehnocats.netlify.app/");
 const $$Sprite = createComponent(async ($$result, $$props, $$slots) => {
@@ -466,7 +466,7 @@ const $$Sprite = createComponent(async ($$result, $$props, $$slots) => {
     ${title ? renderTemplate`<title>${title}</title>` : ""}
     <use${spreadAttributes({ "xlink:href": href, width: props.width, height: props.height, x, y })}></use>
 </svg>`;
-}, "D:/webWork/intern/projects/birka/node_modules/astro-icon/lib/Sprite.astro");
+}, "/Users/Sibusky/dev/birka/node_modules/astro-icon/lib/Sprite.astro");
 
 Object.assign($$Sprite, { Provider: $$SpriteProvider });
 
@@ -487,7 +487,7 @@ const $$Footer = createComponent(async ($$result, $$props, $$slots) => {
     </small>
   </div>
 </footer>`;
-}, "D:/webWork/intern/projects/birka/src/components/Footer.astro");
+}, "/Users/Sibusky/dev/birka/src/components/Footer.astro");
 
 const $$Astro$3 = createAstro("https://astro-tehnocats.netlify.app/");
 const $$Link = createComponent(async ($$result, $$props, $$slots) => {
@@ -503,20 +503,19 @@ const $$Link = createComponent(async ($$result, $$props, $$slots) => {
     classes,
     ...rest
   } = Astro2.props;
-  return renderTemplate`${maybeRenderHead($$result)}<li>
-<a${addAttribute(href, "href")}${addAttribute([
+  return renderTemplate`${maybeRenderHead($$result)}<a${addAttribute(href, "href")}${addAttribute([
     "link",
     classes,
     style,
     { filled: isFilled, bordered: borderVisible }
   ], "class:list")}${spreadAttributes(rest)}>
-    ${icon && icon.side === "left" && renderTemplate`${renderComponent($$result, "Icon", $$Icon, { "name": icon.name, "height": "24", "width": "24" })}`}
+  ${icon && icon.side === "left" && renderTemplate`${renderComponent($$result, "Icon", $$Icon, { "name": icon.name, "height": "24", "width": "24" })}`}
 
-    <span>${text}</span>
+  <span>${text}</span>
 
-    ${icon && icon.side === "right" && renderTemplate`${renderComponent($$result, "Icon", $$Icon, { "name": icon.name, "height": "24", "width": "24" })}`}
-</a></li>`;
-}, "D:/webWork/intern/projects/birka/src/components/Link.astro");
+  ${icon && icon.side === "right" && renderTemplate`${renderComponent($$result, "Icon", $$Icon, { "name": icon.name, "height": "24", "width": "24" })}`}
+</a>`;
+}, "/Users/Sibusky/dev/birka/src/components/Link.astro");
 
 const navData = [
     {
@@ -536,19 +535,21 @@ const $$Nav = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$Nav;
   return renderTemplate`${maybeRenderHead($$result)}<nav aria-label="Primary">
-    <div class="navbar">
-        <a href="/" class="logomark" aria-label="Go home">
-            ${renderComponent($$result, "Icon", $$Icon, { "name": "logomark", "width": "60" })}
-        </a>
-        <ul>
-            ${navData.map((item) => renderTemplate`${renderComponent($$result, "Link", $$Link, { "href": item.path, "text": item.name, "style": "primary", "isFilled": false, "icon": {
+  <div class="navbar">
+    <a href="/" class="logomark" aria-label="Go home">
+      ${renderComponent($$result, "Icon", $$Icon, { "name": "logomark", "width": "60" })}
+    </a>
+    <ul>
+      ${navData.map((item) => renderTemplate`<li>
+            ${renderComponent($$result, "Link", $$Link, { "href": item.path, "text": item.name, "style": "primary", "isFilled": false, "icon": {
     name: item.icon,
     side: "right"
-  } })}`)}
-        </ul>
-    </div>
+  } })}
+          </li>`)}
+    </ul>
+  </div>
 </nav>`;
-}, "D:/webWork/intern/projects/birka/src/components/Nav.astro");
+}, "/Users/Sibusky/dev/birka/src/components/Nav.astro");
 
 const $$Astro$1 = createAstro("https://astro-tehnocats.netlify.app/");
 const $$MainLayout = createComponent(async ($$result, $$props, $$slots) => {
@@ -570,7 +571,7 @@ const $$MainLayout = createComponent(async ($$result, $$props, $$slots) => {
     </main>
     ${renderComponent($$result, "Footer", $$Footer, {})}
   </body></html>`;
-}, "D:/webWork/intern/projects/birka/src/layouts/MainLayout.astro");
+}, "/Users/Sibusky/dev/birka/src/layouts/MainLayout.astro");
 
 const $$Astro = createAstro("https://astro-tehnocats.netlify.app/");
 const $$404 = createComponent(async ($$result, $$props, $$slots) => {
@@ -593,9 +594,9 @@ const $$404 = createComponent(async ($$result, $$props, $$slots) => {
   } })}
     </div>
 ` })}`;
-}, "D:/webWork/intern/projects/birka/src/pages/404.astro");
+}, "/Users/Sibusky/dev/birka/src/pages/404.astro");
 
-const $$file = "D:/webWork/intern/projects/birka/src/pages/404.astro";
+const $$file = "/Users/Sibusky/dev/birka/src/pages/404.astro";
 const $$url = "/404";
 
 const _404 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
