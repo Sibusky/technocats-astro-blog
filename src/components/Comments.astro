@@ -1,21 +1,19 @@
 ---
-// SSR export
-export const prerender = false;
-
-// JSX imports
 import { CommentsList } from "./CommentsList";
-
+export const prerender = true;
 const { id } = Astro.props;
+import CommentsSSR from "./CommentsSSR.astro";
 ---
 
 <section
-  style="width: 90%; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; grid-row: 3 / 4;"
+        style="width: 90%; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; grid-row: 3 / 4;"
 >
-  <h2 class="h3">Comments</h2>
-  <section
-    class="comments"
-    style="display: flex; flex-direction: column; gap: 5px; "
-  >
-    <CommentsList {id} client:load />
-  </section>
+    <h2 class="h3">Comments</h2>
+    <section
+            class="comments"
+            style="display: flex; flex-direction: column; gap: 5px; "
+    >
+        <CommentsSSR id={id}/>
+        <CommentsList id={id} client:load/>
+    </section>
 </section>

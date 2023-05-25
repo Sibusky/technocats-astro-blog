@@ -1,0 +1,38 @@
+---
+import { collection, doc, getDocs } from "firebase/firestore";
+import { getDoc,updateDoc } from "firebase/firestore";
+import { db } from "../js/firestoreConfig.js";
+import PersonIcon from "../assets/PersonIcon.jsx";
+import HandThumbsUpIcon from "../assets/HandThumbsUpIcon.jsx";
+import HandThumbsDownIcon from "../assets/HandThumbsDownIcon.jsx";
+import CommentButtons from "./CommentButtons.jsx";
+import React from "react";
+
+const { id } = Astro.props;
+
+const docRef = doc(db, "comments", `post-${id}`);
+const commentsCollection = collection(docRef, "comments-list");
+
+let comments = [];
+const commentsByFirestone = await getDocs(commentsCollection);
+commentsByFirestone.forEach((comment) => {
+    comments.push({
+        id: comment.id,
+        data: comment.data(),
+    });
+});
+
+export const prerender = true;
+---
+
+{comments.map(comment=> (
+    <div class="comment">
+        <div class="info-about-comment">
+            <PersonIcon/>
+            <h4 class="comment-author">{comment.data.author}</h4>
+            <p>{comment.data.date}</p>
+        </div>
+        <p class="comment__text">{comment.data.comment}</p>
+        <CommentButtons comment={comment.data} postId={id} comId={comment.id} client:load />
+    </div>
+  ))}
