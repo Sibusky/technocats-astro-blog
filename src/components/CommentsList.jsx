@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CommentButton from "./CommentButton";
 import CommentInput from "./CommentInput";
-import useFormWithValidation from "./FormValidator";
+import useFormWithValidation from "../js/FormValidator";
 
 import {
   doc,
@@ -14,39 +14,13 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
-// import { CommentOnTheWall } from "./CommentOnTheWall.jsx";
-// import CommentButtons from "./CommentButtons.jsx";
 
 export function CommentsList({ id }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
 
-  // const [author, setAuthor] = useState("");
-  // const [comment, setComment] = useState("");
-  // const [fullComments, setFullComments] = useState([]);
-
   const docRef = doc(db, "comments", `post-${id}`);
   const commentsCollection = collection(docRef, "comments-list");
-
-  // useEffect(() => {
-  //   getComments();
-  // }, []);
-
-  // async function getComments() {
-  //   const comments = await getDocs(commentsCollection);
-  //   let fullCom = [];
-  //   comments.forEach((comment) => {
-  //     fullCom.push({
-  //       id: comment.id,
-  //       data: comment.data(),
-  //     });
-  //   });
-  //   setFullComments(fullCom.sort((a, b) => a.data.id - b.data.id));
-  // }
-
-  function showMessage(user) {
-    return `Message from author ${user} has sent for moderation. Soon it will appear on site`;
-  }
 
   async function addComment() {
     if (!(values.author && values.comment)) {
@@ -67,7 +41,6 @@ export function CommentsList({ id }) {
       dislikes: 0,
     };
     await addDoc(commentsCollection, newComment);
-    // getComments();
     resetForm();
   }
 
