@@ -19,8 +19,17 @@ export function CommentsList({ id }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
 
+  const [isMessageSent, setIsMessageSent] = useState(false);
+
   const docRef = doc(db, "comments", `post-${id}`);
   const commentsCollection = collection(docRef, "comments-list");
+
+  function showMessage() {
+    setIsMessageSent(true);
+    setTimeout(() => {
+      setIsMessageSent(false);
+    }, 3000);
+  }
 
   async function addComment() {
     if (!(values.author && values.comment)) {
@@ -42,6 +51,7 @@ export function CommentsList({ id }) {
     };
     await addDoc(commentsCollection, newComment);
     resetForm();
+    showMessage();
   }
 
   return (
@@ -76,7 +86,7 @@ export function CommentsList({ id }) {
               type="text"
               placeholder="Here you can leave your comment and share your impressions"
               required
-              minLength="20"
+              minLength="10"
               maxLength="500"
             ></CommentInput>
             <span id="error-comment-text" className="error-message">
@@ -97,6 +107,12 @@ export function CommentsList({ id }) {
           >
             <span>Add your Comment</span>
           </CommentButton>
+          {isMessageSent && (
+            <small>
+              Your comment has been submitted for moderation. After review, it
+              will appear on the website.
+            </small>
+          )}
         </form>
       </div>
     </>
