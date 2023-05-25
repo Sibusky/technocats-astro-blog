@@ -14,9 +14,9 @@ export default defineConfig({
     sitemap(),
     react(),
   ],
-  output: "hybrid",
-  experimental: {
-    hybridOutput: true,
-  },
+  output: "server",
+  // experimental: {
+  //   hybridOutput: true,
+  // },
   adapter: netlify(),
 });
