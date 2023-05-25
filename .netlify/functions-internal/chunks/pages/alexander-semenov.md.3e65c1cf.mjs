@@ -1,5 +1,5 @@
 import { g as createVNode, s as spreadAttributes, F as Fragment } from '../astro.f03c80ea.mjs';
-import { $ as $$BlogPostLayout } from './aleksei-smirnov.md.3366715d.mjs';
+import { $ as $$BlogPostLayout } from './aleksei-smirnov.md.63ed0e84.mjs';
 
 const images = {
 					
@@ -15,10 +15,10 @@ const images = {
 				const html = updateImageReferences("<p>My name is Alexander Semenov. I have basic knowledge acquired through the Yandex Practicum Web Developer course. I try to expand the boundaries of what I have learned step by step, discovering new things while not forgetting the old. Currently, I work in aviation.</p>\n<p>Fun fact about me: I can identify what type of airplane is starting its engines just by the sound.</p>");
 
 				const frontmatter = {"id":2,"layout":"../../layouts/BlogPostLayout.astro","title":"Alexander Semenov. Long way to IT.","date":"2023-05-10T00:00:00.000Z","author":"Alexander Semenov","image":{"src":"/images/alexander-semenov.jpg","alt":"Alexander Semenov's photo"},"description":"Airman in IT. True or false?","draft":false,"category":"Changing the career"};
-				const file = "D:/webWork/intern/projects/birka/src/pages/blog/alexander-semenov.md";
+				const file = "/Users/Sibusky/dev/birka/src/pages/blog/alexander-semenov.md";
 				const url = "/blog/alexander-semenov";
 				function rawContent() {
-					return "\r\nMy name is Alexander Semenov. I have basic knowledge acquired through the Yandex Practicum Web Developer course. I try to expand the boundaries of what I have learned step by step, discovering new things while not forgetting the old. Currently, I work in aviation.\r\n\r\nFun fact about me: I can identify what type of airplane is starting its engines just by the sound.";
+					return "\nMy name is Alexander Semenov. I have basic knowledge acquired through the Yandex Practicum Web Developer course. I try to expand the boundaries of what I have learned step by step, discovering new things while not forgetting the old. Currently, I work in aviation.\n\nFun fact about me: I can identify what type of airplane is starting its engines just by the sound.";
 				}
 				function compiledContent() {
 					return html;
