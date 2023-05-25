@@ -1,6 +1,6 @@
 import { c as createAstro, a as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead, b as addAttribute } from '../astro.f03c80ea.mjs';
-import { s as slugify, a as formatBlogPosts, b as $$MainLayout } from './404.astro.bbf30d01.mjs';
-import { $ as $$PostCard } from './_...author_.astro.4c759066.mjs';
+import { s as slugify, a as formatBlogPosts, b as $$MainLayout } from './404.astro.929bd0d6.mjs';
+import { $ as $$PostCard } from './_...author_.astro.91ae8ad3.mjs';
 import 'cookie';
 import 'kleur/colors';
 import 'slash';
@@ -44,7 +44,7 @@ const $$category = createComponent(async ($$result, $$props, $$slots) => {
   Astro2.self = $$category;
   const { category } = Astro2.params;
   const { name } = Astro2.props;
-  const allPosts = await Astro2.glob(/* #__PURE__ */ Object.assign({"../blog/aleksei-smirnov.md": () => import('./aleksei-smirnov.md.3366715d.mjs').then(n => n._),"../blog/alexander-semenov.md": () => import('./alexander-semenov.md.bf9941b1.mjs').then(n => n._),"../blog/dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.cecad0c7.mjs').then(n => n._),"../blog/elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.10467632.mjs').then(n => n._),"../blog/maria-kikot.md": () => import('./maria-kikot.md.b81238e8.mjs').then(n => n._)}), () => "../blog/*.md");
+  const allPosts = await Astro2.glob(/* #__PURE__ */ Object.assign({"../blog/aleksei-smirnov.md": () => import('./aleksei-smirnov.md.63ed0e84.mjs').then(n => n._),"../blog/alexander-semenov.md": () => import('./alexander-semenov.md.3e65c1cf.mjs').then(n => n._),"../blog/dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.542b27be.mjs').then(n => n._),"../blog/elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.167f415c.mjs').then(n => n._),"../blog/maria-kikot.md": () => import('./maria-kikot.md.5ce6b339.mjs').then(n => n._)}), () => "../blog/*.md");
   const formattedPosts = formatBlogPosts(allPosts);
   const catPosts = formattedPosts.filter((post) => slugify(post.frontmatter.category) === category);
   return renderTemplate`${renderComponent($$result, "MainLayout", $$MainLayout, { "title": name }, { "default": ($$result2) => renderTemplate`
@@ -55,9 +55,9 @@ const $$category = createComponent(async ($$result, $$props, $$slots) => {
       </div>
   </section>
 ` })}`;
-}, "D:/webWork/intern/projects/birka/src/pages/category/[category].astro");
+}, "/Users/Sibusky/dev/birka/src/pages/category/[category].astro");
 
-const $$file = "D:/webWork/intern/projects/birka/src/pages/category/[category].astro";
+const $$file = "/Users/Sibusky/dev/birka/src/pages/category/[category].astro";
 const $$url = "/category/[category]";
 
 export { $$category as default, $$file as file, getStaticPaths, $$url as url };

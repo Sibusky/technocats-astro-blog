@@ -1,6 +1,6 @@
 import { c as createAstro, a as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead } from '../astro.f03c80ea.mjs';
-import { a as formatBlogPosts, $ as $$Link, b as $$MainLayout } from './404.astro.bbf30d01.mjs';
-import { $ as $$PostCard } from './_...author_.astro.4c759066.mjs';
+import { a as formatBlogPosts, $ as $$Link, b as $$MainLayout } from './404.astro.929bd0d6.mjs';
+import { $ as $$PostCard } from './_...author_.astro.91ae8ad3.mjs';
 import 'cookie';
 import 'kleur/colors';
 import 'slash';
@@ -22,7 +22,7 @@ const $$Astro = createAstro("https://astro-tehnocats.netlify.app/");
 const $$Index = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
-  const allPosts = await Astro2.glob(/* #__PURE__ */ Object.assign({"./blog/aleksei-smirnov.md": () => import('./aleksei-smirnov.md.3366715d.mjs').then(n => n._),"./blog/alexander-semenov.md": () => import('./alexander-semenov.md.bf9941b1.mjs').then(n => n._),"./blog/dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.cecad0c7.mjs').then(n => n._),"./blog/elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.10467632.mjs').then(n => n._),"./blog/maria-kikot.md": () => import('./maria-kikot.md.b81238e8.mjs').then(n => n._)}), () => "./blog/*.md");
+  const allPosts = await Astro2.glob(/* #__PURE__ */ Object.assign({"./blog/aleksei-smirnov.md": () => import('./aleksei-smirnov.md.63ed0e84.mjs').then(n => n._),"./blog/alexander-semenov.md": () => import('./alexander-semenov.md.3e65c1cf.mjs').then(n => n._),"./blog/dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.542b27be.mjs').then(n => n._),"./blog/elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.167f415c.mjs').then(n => n._),"./blog/maria-kikot.md": () => import('./maria-kikot.md.5ce6b339.mjs').then(n => n._)}), () => "./blog/*.md");
   const formattedPosts = formatBlogPosts(allPosts, {
     limit: 3
   });
@@ -45,9 +45,9 @@ const $$Index = createComponent(async ($$result, $$props, $$slots) => {
   </section>
 
 ` })}`;
-}, "D:/webWork/intern/projects/birka/src/pages/index.astro");
+}, "/Users/Sibusky/dev/birka/src/pages/index.astro");
 
-const $$file = "D:/webWork/intern/projects/birka/src/pages/index.astro";
+const $$file = "/Users/Sibusky/dev/birka/src/pages/index.astro";
 const $$url = "";
 
 export { $$Index as default, $$file as file, $$url as url };

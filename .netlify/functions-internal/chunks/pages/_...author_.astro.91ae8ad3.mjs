@@ -9,7 +9,7 @@ import 'magic-string';
 import mime from 'mime';
 import 'node:stream';
 import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, s as spreadAttributes, b as addAttribute, d as renderComponent } from '../astro.f03c80ea.mjs';
-import { s as slugify, f as formatDate, $ as $$Link, a as formatBlogPosts, b as $$MainLayout } from './404.astro.bbf30d01.mjs';
+import { s as slugify, f as formatDate, $ as $$Link, a as formatBlogPosts, b as $$MainLayout } from './404.astro.929bd0d6.mjs';
 
 function isOutputFormat(value) {
   return ["avif", "jpeg", "jpg", "png", "webp", "svg"].includes(value);
@@ -199,7 +199,7 @@ async function getImage(transform) {
   }
   let loader = (_a = globalThis.astroImage) == null ? void 0 : _a.loader;
   if (!loader) {
-    const { default: mod } = await import('./endpoint.js.30cc23b9.mjs').then(n => n.s).catch(() => {
+    const { default: mod } = await import('./endpoint.js.42dbb1b6.mjs').then(n => n.s).catch(() => {
       throw new Error(
         "[@astrojs/image] Builtin image loader not found. (Did you remember to add the integration to your Astro config?)"
       );
@@ -210,7 +210,7 @@ async function getImage(transform) {
   }
   const resolved = await resolveTransform(transform);
   const attributes = await loader.getImageAttributes(resolved);
-  const isDev = (_b = (Object.assign({"BASE_URL":"/","MODE":"production","DEV":false,"PROD":true,"SSR":true,"SITE":"https://astro-tehnocats.netlify.app/","ASSETS_PREFIX":undefined},{SSR:true,}))) == null ? void 0 : _b.DEV;
+  const isDev = (_b = (Object.assign({"BASE_URL":"/","MODE":"production","DEV":false,"PROD":true,"SSR":true,"SITE":"https://astro-tehnocats.netlify.app/","ASSETS_PREFIX":undefined},{_:process.env._,SSR:true,}))) == null ? void 0 : _b.DEV;
   const isLocalImage = !isRemoteImage(resolved.src);
   const _loader = isDev && isLocalImage ? globalThis.astroImage.defaultLoader : loader;
   if (!_loader) {
@@ -310,7 +310,7 @@ const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   }
   const attrs = await getImage(props);
   return renderTemplate`${maybeRenderHead($$result)}<img${spreadAttributes(attrs)}${addAttribute(loading, "loading")}${addAttribute(decoding, "decoding")}>`;
-}, "D:/webWork/intern/projects/birka/node_modules/@astrojs/image/components/Image.astro");
+}, "/Users/Sibusky/dev/birka/node_modules/@astrojs/image/components/Image.astro");
 
 const $$Astro$2 = createAstro("https://astro-tehnocats.netlify.app/");
 const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
@@ -349,7 +349,7 @@ const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
 	${sources.map((attrs2) => renderTemplate`<source${spreadAttributes(attrs2)}${addAttribute(sizes, "sizes")}>`)}
 	<img${spreadAttributes(image)}${addAttribute(loading, "loading")}${addAttribute(decoding, "decoding")}${spreadAttributes(attrs)}>
 </picture>`;
-}, "D:/webWork/intern/projects/birka/node_modules/@astrojs/image/components/Picture.astro");
+}, "/Users/Sibusky/dev/birka/node_modules/@astrojs/image/components/Picture.astro");
 
 let altWarningShown = false;
 function warnForMissingAlt() {
@@ -395,12 +395,12 @@ const $$PostCard = createComponent(async ($$result, $$props, $$slots) => {
         ${renderComponent($$result, "Link", $$Link, { "href": url, "text": "Read post", "style": "secondary" })}
     </div>   
 </article>`;
-}, "D:/webWork/intern/projects/birka/src/components/PostCard.astro");
+}, "/Users/Sibusky/dev/birka/src/components/PostCard.astro");
 
 const $$Astro = createAstro("https://astro-tehnocats.netlify.app/");
 const Astro = $$Astro;
 async function getStaticPaths() {
-  const allPosts = await Astro.glob(/* #__PURE__ */ Object.assign({"../blog/aleksei-smirnov.md": () => import('./aleksei-smirnov.md.3366715d.mjs').then(n => n._),"../blog/alexander-semenov.md": () => import('./alexander-semenov.md.bf9941b1.mjs').then(n => n._),"../blog/dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.cecad0c7.mjs').then(n => n._),"../blog/elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.10467632.mjs').then(n => n._),"../blog/maria-kikot.md": () => import('./maria-kikot.md.b81238e8.mjs').then(n => n._)}), () => "../blog/*.md");
+  const allPosts = await Astro.glob(/* #__PURE__ */ Object.assign({"../blog/aleksei-smirnov.md": () => import('./aleksei-smirnov.md.63ed0e84.mjs').then(n => n._),"../blog/alexander-semenov.md": () => import('./alexander-semenov.md.3e65c1cf.mjs').then(n => n._),"../blog/dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.542b27be.mjs').then(n => n._),"../blog/elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.167f415c.mjs').then(n => n._),"../blog/maria-kikot.md": () => import('./maria-kikot.md.5ce6b339.mjs').then(n => n._)}), () => "../blog/*.md");
   const formattedPosts = formatBlogPosts(allPosts);
   const allAuthors = [
     ...new Set(
@@ -431,9 +431,9 @@ const $$ = createComponent(async ($$result, $$props, $$slots) => {
       </div>
   </section>
 ` })}`;
-}, "D:/webWork/intern/projects/birka/src/pages/author/[...author].astro");
+}, "/Users/Sibusky/dev/birka/src/pages/author/[...author].astro");
 
-const $$file = "D:/webWork/intern/projects/birka/src/pages/author/[...author].astro";
+const $$file = "/Users/Sibusky/dev/birka/src/pages/author/[...author].astro";
 const $$url = "/author/[...author]";
 
 const ____author_ = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
