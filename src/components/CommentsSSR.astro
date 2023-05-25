@@ -1,6 +1,6 @@
 ---
 import { collection, doc, getDocs } from "firebase/firestore";
-import { getDoc,updateDoc } from "firebase/firestore";
+import { getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../js/firestoreConfig.js";
 import PersonIcon from "../assets/PersonIcon.jsx";
 import HandThumbsUpIcon from "../assets/HandThumbsUpIcon.jsx";
@@ -16,23 +16,32 @@ const commentsCollection = collection(docRef, "comments-list");
 let comments = [];
 const commentsByFirestone = await getDocs(commentsCollection);
 commentsByFirestone.forEach((comment) => {
-    comments.push({
-        id: comment.id,
-        data: comment.data(),
-    });
+  comments.push({
+    id: comment.id,
+    data: comment.data(),
+  });
 });
 
-export const prerender = true;
+export const prerender = false;
 ---
 
-{comments.map(comment=> (
-    <div class="comment">
+{
+  comments
+    .sort((a, b) => a.data.id - b.data.id)
+    .map((comment) => (
+      <div class="comment">
         <div class="info-about-comment">
-            <PersonIcon/>
-            <h4 class="comment-author">{comment.data.author}</h4>
-            <p>{comment.data.date}</p>
+          <PersonIcon />
+          <h4 class="comment-author">{comment.data.author}</h4>
+          <p>{comment.data.date}</p>
         </div>
         <p class="comment__text">{comment.data.comment}</p>
-        <CommentButtons comment={comment.data} postId={id} comId={comment.id} client:load />
-    </div>
-  ))}
+        <CommentButtons
+          comment={comment.data}
+          postId={id}
+          comId={comment.id}
+          client:load
+        />
+      </div>
+    ))
+}

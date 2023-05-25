@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CommentButton from "./CommentButton";
 import CommentInput from "./CommentInput";
-import useFormWithValidation from './FormValidator';
+import useFormWithValidation from "../js/FormValidator";
 
 import {
   doc,
@@ -14,35 +14,21 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
-import { CommentOnTheWall } from "./CommentOnTheWall.jsx";
-import CommentButtons from "./CommentButtons.jsx";
-
 
 export function CommentsList({ id }) {
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormWithValidation();
 
-  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
-
-  const [author, setAuthor] = useState("");
-  const [comment, setComment] = useState("");
-  const [fullComments, setFullComments] = useState([]);
+  const [isMessageSent, setIsMessageSent] = useState(false);
 
   const docRef = doc(db, "comments", `post-${id}`);
   const commentsCollection = collection(docRef, "comments-list");
 
-  useEffect(() => {
-    getComments();
-  }, []);
-
-  async function getComments() {
-    const comments = await getDocs(commentsCollection);
-    let fullCom = [];
-    comments.forEach((comment) => {
-      fullCom.push({
-        id: comment.id,
-        data: comment.data(),
-      });
-    });
-    setFullComments(fullCom.sort((a, b) => a.data.id - b.data.id));
+  function showMessage() {
+    setIsMessageSent(true);
+    setTimeout(() => {
+      setIsMessageSent(false);
+    }, 3000);
   }
 
   async function addComment() {
@@ -64,10 +50,9 @@ export function CommentsList({ id }) {
       dislikes: 0,
     };
     await addDoc(commentsCollection, newComment);
-    getComments();
     resetForm();
+    showMessage();
   }
-
 
   return (
     <>
@@ -85,9 +70,11 @@ export function CommentsList({ id }) {
               required
               minLength="2"
               maxLength="30"
-              pattern='^[А-Яа-яa-zA-ZёЁ][А-Яа-яa-zA-ZёЁ\s\-]+'
+              pattern="^[А-Яа-яa-zA-ZёЁ][А-Яа-яa-zA-ZёЁ\s\-]+"
             ></CommentInput>
-            <span id="error-name-author" className="error-message">{errors.author}</span>
+            <span id="error-name-author" className="error-message">
+              {errors.author}
+            </span>
           </div>
           <div className="input-container">
             <CommentInput
@@ -99,10 +86,12 @@ export function CommentsList({ id }) {
               type="text"
               placeholder="Here you can leave your comment and share your impressions"
               required
-              minLength="20"
+              minLength="10"
               maxLength="500"
             ></CommentInput>
-            <span id="error-comment-text" className="error-message">{errors.comment}</span>
+            <span id="error-comment-text" className="error-message">
+              {errors.comment}
+            </span>
           </div>
           <CommentButton
             onClick={(e) => {
@@ -110,10 +99,20 @@ export function CommentsList({ id }) {
               addComment();
             }}
             disabled={isValid ? false : true}
-            className={isValid ? "link secondary filled comment_button" : "link secondary comment_button_inactive"}
+            className={
+              isValid
+                ? "link secondary filled comment_button"
+                : "link secondary comment_button_inactive"
+            }
           >
             <span>Add your Comment</span>
           </CommentButton>
+          {isMessageSent && (
+            <small>
+              Your comment has been submitted for moderation. After review, it
+              will appear on the website.
+            </small>
+          )}
         </form>
       </div>
     </>
