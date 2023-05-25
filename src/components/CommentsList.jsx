@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CommentButton from "./CommentButton";
 import CommentInput from "./CommentInput";
-import useFormWithValidation from './FormValidator';
+import useFormWithValidation from "./FormValidator";
 
 import {
   doc,
@@ -14,35 +14,38 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
-import { CommentOnTheWall } from "./CommentOnTheWall.jsx";
-import CommentButtons from "./CommentButtons.jsx";
-
+// import { CommentOnTheWall } from "./CommentOnTheWall.jsx";
+// import CommentButtons from "./CommentButtons.jsx";
 
 export function CommentsList({ id }) {
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormWithValidation();
 
-  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
-
-  const [author, setAuthor] = useState("");
-  const [comment, setComment] = useState("");
-  const [fullComments, setFullComments] = useState([]);
+  // const [author, setAuthor] = useState("");
+  // const [comment, setComment] = useState("");
+  // const [fullComments, setFullComments] = useState([]);
 
   const docRef = doc(db, "comments", `post-${id}`);
   const commentsCollection = collection(docRef, "comments-list");
 
-  useEffect(() => {
-    getComments();
-  }, []);
+  // useEffect(() => {
+  //   getComments();
+  // }, []);
 
-  async function getComments() {
-    const comments = await getDocs(commentsCollection);
-    let fullCom = [];
-    comments.forEach((comment) => {
-      fullCom.push({
-        id: comment.id,
-        data: comment.data(),
-      });
-    });
-    setFullComments(fullCom.sort((a, b) => a.data.id - b.data.id));
+  // async function getComments() {
+  //   const comments = await getDocs(commentsCollection);
+  //   let fullCom = [];
+  //   comments.forEach((comment) => {
+  //     fullCom.push({
+  //       id: comment.id,
+  //       data: comment.data(),
+  //     });
+  //   });
+  //   setFullComments(fullCom.sort((a, b) => a.data.id - b.data.id));
+  // }
+
+  function showMessage(user) {
+    return `Message from author ${user} has sent for moderation. Soon it will appear on site`;
   }
 
   async function addComment() {
@@ -64,10 +67,9 @@ export function CommentsList({ id }) {
       dislikes: 0,
     };
     await addDoc(commentsCollection, newComment);
-    getComments();
+    // getComments();
     resetForm();
   }
-
 
   return (
     <>
@@ -85,9 +87,11 @@ export function CommentsList({ id }) {
               required
               minLength="2"
               maxLength="30"
-              pattern='^[А-Яа-яa-zA-ZёЁ][А-Яа-яa-zA-ZёЁ\s\-]+'
+              pattern="^[А-Яа-яa-zA-ZёЁ][А-Яа-яa-zA-ZёЁ\s\-]+"
             ></CommentInput>
-            <span id="error-name-author" className="error-message">{errors.author}</span>
+            <span id="error-name-author" className="error-message">
+              {errors.author}
+            </span>
           </div>
           <div className="input-container">
             <CommentInput
@@ -102,7 +106,9 @@ export function CommentsList({ id }) {
               minLength="20"
               maxLength="500"
             ></CommentInput>
-            <span id="error-comment-text" className="error-message">{errors.comment}</span>
+            <span id="error-comment-text" className="error-message">
+              {errors.comment}
+            </span>
           </div>
           <CommentButton
             onClick={(e) => {
@@ -110,7 +116,11 @@ export function CommentsList({ id }) {
               addComment();
             }}
             disabled={isValid ? false : true}
-            className={isValid ? "link secondary filled comment_button" : "link secondary comment_button_inactive"}
+            className={
+              isValid
+                ? "link secondary filled comment_button"
+                : "link secondary comment_button_inactive"
+            }
           >
             <span>Add your Comment</span>
           </CommentButton>
