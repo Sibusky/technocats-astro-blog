@@ -1,6 +1,6 @@
 import React from "react";
 
-const CommentButton = ({children, className, disabled, ...props}) => {
+const FormButton = ({children, className, disabled, ...props}) => {
   return (
     <button {...props} className={className} type="submit" disabled={disabled}>
       {children}
@@ -8,4 +8,4 @@ const CommentButton = ({children, className, disabled, ...props}) => {
   )
 };
 
-export default CommentButton;
+export default FormButton;

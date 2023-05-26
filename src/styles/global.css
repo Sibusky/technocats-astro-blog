@@ -958,12 +958,14 @@ header .container {
 
 .comment_button {
   padding: 20px;
+  margin: 20px 0 0 0;
 }
 
 .comment_button_inactive {
   background-color: #f8f8f8;
   color: #252525;
   cursor: default;
+  margin: 20px 0 0 0;
 }
 
 .comment__likebuttons {
