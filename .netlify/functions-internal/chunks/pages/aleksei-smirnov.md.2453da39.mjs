@@ -1,8 +1,9 @@
 import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, d as renderComponent, _ as __astro_tag_component__, f as renderSlot, g as createVNode, s as spreadAttributes, F as Fragment$1 } from '../astro.f03c80ea.mjs';
-import { a as $$Image } from './_...author_.astro.91ae8ad3.mjs';
-import { s as slugify, f as formatDate, a as formatBlogPosts, b as $$MainLayout } from './404.astro.929bd0d6.mjs';
-import { $ as $$CategoryCloud } from './_...page_.astro.83e57c0a.mjs';
+import { a as $$Image } from './_...author_.astro.db676f95.mjs';
+import { s as slugify, f as formatDate, a as formatBlogPosts, b as $$MainLayout } from './404.astro.5affa770.mjs';
+import { $ as $$CategoryCloud } from './_...page_.astro.d244b4f3.mjs';
 import React, { useCallback, useState, useEffect } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
 import { getFirestore, doc, collection, getDoc, setDoc, addDoc, updateDoc, getDocs } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
@@ -42,7 +43,7 @@ const $$RelatedPosts = createComponent(async ($$result, $$props, $$slots) => {
     </div>`)}`;
 }, "/Users/Sibusky/dev/birka/src/components/RelatedPosts.astro");
 
-const CommentButton = ({
+const FormButton = ({
   children,
   className,
   disabled,
@@ -56,14 +57,14 @@ const CommentButton = ({
     children
   });
 };
-__astro_tag_component__(CommentButton, "@astrojs/react");
+__astro_tag_component__(FormButton, "@astrojs/react");
 
-const CommentInput = (props) => {
+const FormInput = (props) => {
   return /* @__PURE__ */ jsx(props.tag, {
     ...props
   });
 };
-__astro_tag_component__(CommentInput, "@astrojs/react");
+__astro_tag_component__(FormInput, "@astrojs/react");
 
 function useFormWithValidation() {
   const [values, setValues] = React.useState({author: "", comment: ""});
@@ -105,7 +106,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-function CommentsList({
+function NewCommentForm({
   id
 }) {
   const {
@@ -116,13 +117,14 @@ function CommentsList({
     resetForm
   } = useFormWithValidation();
   const [isMessageSent, setIsMessageSent] = useState(false);
+  const [isCaptchaSuccessful, setIsCaptchaSuccess] = useState(false);
   const docRef = doc(db, "comments", `post-${id}`);
   const commentsCollection = collection(docRef, "comments-list");
   function showMessage() {
     setIsMessageSent(true);
     setTimeout(() => {
       setIsMessageSent(false);
-    }, 3e3);
+    }, 5e3);
   }
   async function addComment() {
     if (!(values.author && values.comment)) {
@@ -144,6 +146,9 @@ function CommentsList({
     resetForm();
     showMessage();
   }
+  function onChange(value) {
+    setIsCaptchaSuccess(true);
+  }
   return /* @__PURE__ */ jsx(Fragment, {
     children: /* @__PURE__ */ jsx("div", {
       className: "comment-form",
@@ -151,14 +156,14 @@ function CommentsList({
         name: "comment-form",
         children: [/* @__PURE__ */ jsxs("div", {
           className: "input-container",
-          children: [/* @__PURE__ */ jsx(CommentInput, {
+          children: [/* @__PURE__ */ jsx(FormInput, {
             tag: "input",
             value: values.author,
             onChange: handleChange,
             id: "name-author",
             name: "author",
             type: "text",
-            placeholder: "Name",
+            placeholder: "Your name",
             required: true,
             minLength: "2",
             maxLength: "30",
@@ -170,7 +175,7 @@ function CommentsList({
           })]
         }), /* @__PURE__ */ jsxs("div", {
           className: "input-container",
-          children: [/* @__PURE__ */ jsx(CommentInput, {
+          children: [/* @__PURE__ */ jsx(FormInput, {
             tag: "textarea",
             value: values.comment,
             onChange: handleChange,
@@ -186,13 +191,16 @@ function CommentsList({
             className: "error-message",
             children: errors.comment
           })]
-        }), /* @__PURE__ */ jsx(CommentButton, {
+        }), /* @__PURE__ */ jsx(ReCAPTCHA, {
+          sitekey: "6LfkAUAmAAAAAD3nCp4gMG7MBEuV-5yEp7ISV9pT",
+          onChange
+        }), /* @__PURE__ */ jsx(FormButton, {
           onClick: (e) => {
             e.preventDefault();
             addComment();
           },
-          disabled: isValid ? false : true,
-          className: isValid ? "link secondary filled comment_button" : "link secondary comment_button_inactive",
+          disabled: isValid && isCaptchaSuccessful ? false : true,
+          className: isValid && isCaptchaSuccessful ? "link secondary filled comment_button" : "link secondary comment_button_inactive",
           children: /* @__PURE__ */ jsx("span", {
             children: "Add your Comment"
           })
@@ -203,7 +211,7 @@ function CommentsList({
     })
   });
 }
-__astro_tag_component__(CommentsList, "@astrojs/react");
+__astro_tag_component__(NewCommentForm, "@astrojs/react");
 
 function PersonIcon() {
   return /* @__PURE__ */ jsxs("svg", {
@@ -262,7 +270,7 @@ function HandThumbsDownIcon({
 }
 __astro_tag_component__(HandThumbsDownIcon, "@astrojs/react");
 
-const CommentButtons = ({
+const CommentRatingButtons = ({
   comment,
   postId,
   comId
@@ -339,7 +347,7 @@ const CommentButtons = ({
     })]
   });
 };
-__astro_tag_component__(CommentButtons, "@astrojs/react");
+__astro_tag_component__(CommentRatingButtons, "@astrojs/react");
 
 const $$Astro$2 = createAstro("https://astro-tehnocats.netlify.app/");
 const $$CommentsSSR = createComponent(async ($$result, $$props, $$slots) => {
@@ -363,7 +371,7 @@ const $$CommentsSSR = createComponent(async ($$result, $$props, $$slots) => {
           <p>${comment.data.date}</p>
         </div>
         <p class="comment__text">${comment.data.comment}</p>
-        ${renderComponent($$result, "CommentButtons", CommentButtons, { "comment": comment.data, "postId": id, "comId": comment.id, "client:load": true, "client:component-hydration": "load", "client:component-path": "/Users/Sibusky/dev/birka/src/components/CommentButtons.jsx", "client:component-export": "default" })}
+        ${renderComponent($$result, "CommentRatingButtons", CommentRatingButtons, { "comment": comment.data, "postId": id, "comId": comment.id, "client:load": true, "client:component-hydration": "load", "client:component-path": "/Users/Sibusky/dev/birka/src/components/CommentRatingButtons.jsx", "client:component-export": "default" })}
       </div>`)}`;
 }, "/Users/Sibusky/dev/birka/src/components/CommentsSSR.astro");
 
@@ -376,7 +384,7 @@ const $$Comments = createComponent(async ($$result, $$props, $$slots) => {
   <h2 class="h3">Comments</h2>
   <section class="comments" style="display: flex; flex-direction: column; gap: 5px; ">
     ${renderComponent($$result, "CommentsSSR", $$CommentsSSR, { "id": id })}
-    ${renderComponent($$result, "CommentsList", CommentsList, { "id": id, "client:load": true, "client:component-hydration": "load", "client:component-path": "/Users/Sibusky/dev/birka/src/components/CommentsList", "client:component-export": "CommentsList" })}
+    ${renderComponent($$result, "NewCommentForm", NewCommentForm, { "id": id, "client:load": true, "client:component-hydration": "load", "client:component-path": "/Users/Sibusky/dev/birka/src/components/NewCommentForm", "client:component-export": "NewCommentForm" })}
   </section>
 </section>`;
 }, "/Users/Sibusky/dev/birka/src/components/Comments.astro");
@@ -515,7 +523,7 @@ const $$BlogPostLayout = createComponent(async ($$result, $$props, $$slots) => {
   Astro2.self = $$BlogPostLayout;
   const { frontmatter } = Astro2.props;
   const { id, title, description, date, category, author, image } = frontmatter;
-  const allPosts = await Astro2.glob(/* #__PURE__ */ Object.assign({"../pages/blog/aleksei-smirnov.md": () => Promise.resolve().then(() => __vite_glob_0_0),"../pages/blog/alexander-semenov.md": () => import('./alexander-semenov.md.3e65c1cf.mjs').then(n => n._),"../pages/blog/dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.542b27be.mjs').then(n => n._),"../pages/blog/elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.167f415c.mjs').then(n => n._),"../pages/blog/maria-kikot.md": () => import('./maria-kikot.md.5ce6b339.mjs').then(n => n._)}), () => "../pages/blog/*.md");
+  const allPosts = await Astro2.glob(/* #__PURE__ */ Object.assign({"../pages/blog/aleksei-smirnov.md": () => Promise.resolve().then(() => __vite_glob_0_0),"../pages/blog/alexander-semenov.md": () => import('./alexander-semenov.md.3a38e63a.mjs').then(n => n._),"../pages/blog/dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.1a9f8a13.mjs').then(n => n._),"../pages/blog/elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.eb31b809.mjs').then(n => n._),"../pages/blog/igor-teplostanski.md": () => import('./igor-teplostanski.md.ae4901cc.mjs').then(n => n._),"../pages/blog/maria-kikot.md": () => import('./maria-kikot.md.b1d9ec8a.mjs').then(n => n._)}), () => "../pages/blog/*.md");
   const formattedPosts = formatBlogPosts(allPosts, {
     sortByDate: false
   });
