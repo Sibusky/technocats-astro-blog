@@ -1,8 +1,6 @@
 ---
-import { CommentsList } from "./CommentsList";
+import { NewCommentForm } from "./NewCommentForm";
 import CommentsSSR from "./CommentsSSR.astro";
-
-// export const prerender = false;
 
 const { id } = Astro.props;
 ---
@@ -16,6 +14,6 @@ const { id } = Astro.props;
     style="display: flex; flex-direction: column; gap: 5px; "
   >
     <CommentsSSR id={id} />
-    <CommentsList id={id} client:load />
+    <NewCommentForm id={id} client:load />
   </section>
 </section>
