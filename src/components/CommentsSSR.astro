@@ -5,9 +5,8 @@ import { db } from "../js/firestoreConfig.js";
 import PersonIcon from "../assets/PersonIcon.jsx";
 import HandThumbsUpIcon from "../assets/HandThumbsUpIcon.jsx";
 import HandThumbsDownIcon from "../assets/HandThumbsDownIcon.jsx";
-import CommentButtons from "./CommentButtons.jsx";
+import CommentRatingButtons from "./CommentRatingButtons.jsx";
 import React from "react";
-
 const { id } = Astro.props;
 
 const docRef = doc(db, "comments", `post-${id}`);
@@ -22,7 +21,6 @@ commentsByFirestone.forEach((comment) => {
   });
 });
 
-// export const prerender = false;
 ---
 
 {
@@ -36,7 +34,7 @@ commentsByFirestone.forEach((comment) => {
           <p>{comment.data.date}</p>
         </div>
         <p class="comment__text">{comment.data.comment}</p>
-        <CommentButtons
+        <CommentRatingButtons
           comment={comment.data}
           postId={id}
           comId={comment.id}

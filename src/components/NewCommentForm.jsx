@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from "react";
-import CommentButton from "./CommentButton";
-import CommentInput from "./CommentInput";
+import ReCAPTCHA from "react-google-recaptcha";
+import FormButton from "./FormButton";
+import FormInput from "./FormInput";
 import useFormWithValidation from "../js/FormValidator";
 
-import {
-  doc,
-  setDoc,
-  getDoc,
-  getDocs,
-  updateDoc,
-  addDoc,
-  collection,
-} from "firebase/firestore";
+import { doc, setDoc, getDoc, addDoc, collection } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
 
-export function CommentsList({ id }) {
+export function NewCommentForm({ id }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
 
   const [isMessageSent, setIsMessageSent] = useState(false);
+  const [isCaptchaSuccessful, setIsCaptchaSuccess] = useState(false);
 
   const docRef = doc(db, "comments", `post-${id}`);
   const commentsCollection = collection(docRef, "comments-list");
@@ -28,7 +22,7 @@ export function CommentsList({ id }) {
     setIsMessageSent(true);
     setTimeout(() => {
       setIsMessageSent(false);
-    }, 3000);
+    }, 5000);
   }
 
   async function addComment() {
@@ -54,30 +48,34 @@ export function CommentsList({ id }) {
     showMessage();
   }
 
+  function onChange(value) {
+    setIsCaptchaSuccess(true);
+  }
+
   return (
     <>
       <div className="comment-form">
         <form name="comment-form">
           <div className="input-container">
-            <CommentInput
+            <FormInput
               tag="input"
               value={values.author}
               onChange={handleChange}
               id="name-author"
               name="author"
               type="text"
-              placeholder="Name"
+              placeholder="Your name"
               required
               minLength="2"
               maxLength="30"
               pattern="^[А-Яа-яa-zA-ZёЁ][А-Яа-яa-zA-ZёЁ\s\-]+"
-            ></CommentInput>
+            ></FormInput>
             <span id="error-name-author" className="error-message">
               {errors.author}
             </span>
           </div>
           <div className="input-container">
-            <CommentInput
+            <FormInput
               tag="textarea"
               value={values.comment}
               onChange={handleChange}
@@ -88,25 +86,29 @@ export function CommentsList({ id }) {
               required
               minLength="10"
               maxLength="500"
-            ></CommentInput>
+            ></FormInput>
             <span id="error-comment-text" className="error-message">
               {errors.comment}
             </span>
           </div>
-          <CommentButton
+          <ReCAPTCHA
+            sitekey="6LfkAUAmAAAAAD3nCp4gMG7MBEuV-5yEp7ISV9pT"
+            onChange={onChange}
+          />
+          <FormButton
             onClick={(e) => {
               e.preventDefault();
               addComment();
             }}
-            disabled={isValid ? false : true}
+            disabled={isValid && isCaptchaSuccessful ? false : true}
             className={
-              isValid
+              isValid && isCaptchaSuccessful
                 ? "link secondary filled comment_button"
                 : "link secondary comment_button_inactive"
             }
           >
             <span>Add your Comment</span>
-          </CommentButton>
+          </FormButton>
           {isMessageSent && (
             <small>
               Your comment has been submitted for moderation. After review, it

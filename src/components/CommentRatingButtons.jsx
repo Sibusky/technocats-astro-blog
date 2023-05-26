@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../js/firestoreConfig.js";
 
-const CommentButtons = ({ comment, postId, comId }) => {
+const CommentRatingButtons = ({ comment, postId, comId }) => {
   const commentRef = doc(
     db,
     "comments",
@@ -89,4 +89,4 @@ const CommentButtons = ({ comment, postId, comId }) => {
   );
 };
 
-export default CommentButtons;
+export default CommentRatingButtons;
