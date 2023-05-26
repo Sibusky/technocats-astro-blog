@@ -1,7 +1,7 @@
 import React from "react";
 
-const CommentInput = (props) => {
+const FormInput = (props) => {
   return <props.tag {...props} />;
 };
 
-export default CommentInput;
+export default FormInput;
