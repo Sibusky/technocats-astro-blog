@@ -8,6 +8,8 @@ import { doc, setDoc, getDoc, addDoc, collection } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
 
+export const prerender = true
+
 export function NewCommentForm({ id }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
