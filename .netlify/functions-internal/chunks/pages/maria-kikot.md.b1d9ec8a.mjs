@@ -1,5 +1,5 @@
 import { g as createVNode, s as spreadAttributes, F as Fragment } from '../astro.f03c80ea.mjs';
-import { $ as $$BlogPostLayout } from './aleksei-smirnov.md.63ed0e84.mjs';
+import { $ as $$BlogPostLayout } from './aleksei-smirnov.md.2453da39.mjs';
 
 const images = {
 					
@@ -45,7 +45,7 @@ const images = {
 				}
 				Content[Symbol.for('astro.needsHeadRendering')] = false;
 
-const __vite_glob_0_4 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const __vite_glob_0_5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 	__proto__: null,
 	Content,
 	compiledContent,
@@ -58,4 +58,4 @@ const __vite_glob_0_4 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePro
 	url
 }, Symbol.toStringTag, { value: 'Module' }));
 
-export { __vite_glob_0_4 as _ };
+export { __vite_glob_0_5 as _ };

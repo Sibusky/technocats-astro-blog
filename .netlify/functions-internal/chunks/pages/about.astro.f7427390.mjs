@@ -1,5 +1,5 @@
 import { c as createAstro, a as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead } from '../astro.f03c80ea.mjs';
-import { $ as $$Link, b as $$MainLayout } from './404.astro.929bd0d6.mjs';
+import { $ as $$Link, b as $$MainLayout } from './404.astro.5affa770.mjs';
 import 'cookie';
 import 'kleur/colors';
 import 'slash';

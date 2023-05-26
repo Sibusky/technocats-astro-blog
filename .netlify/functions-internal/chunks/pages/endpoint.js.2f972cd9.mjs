@@ -1,6 +1,6 @@
 import mime from 'mime';
 import sharp$1 from 'sharp';
-import { B as BaseSSRService, i as isOutputFormatSupportsAlpha, b as isRemoteImage } from './_...author_.astro.91ae8ad3.mjs';
+import { B as BaseSSRService, i as isOutputFormatSupportsAlpha, b as isRemoteImage } from './_...author_.astro.db676f95.mjs';
 
 class SharpService extends BaseSSRService {
   async transform(inputBuffer, transform) {

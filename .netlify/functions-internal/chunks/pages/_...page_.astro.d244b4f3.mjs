@@ -1,12 +1,12 @@
 import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, d as renderComponent } from '../astro.f03c80ea.mjs';
-import { a as formatBlogPosts, s as slugify, $ as $$Link, b as $$MainLayout } from './404.astro.929bd0d6.mjs';
-import { $ as $$PostCard } from './_...author_.astro.91ae8ad3.mjs';
+import { a as formatBlogPosts, s as slugify, $ as $$Link, b as $$MainLayout } from './404.astro.5affa770.mjs';
+import { $ as $$PostCard } from './_...author_.astro.db676f95.mjs';
 
 const $$Astro$2 = createAstro("https://astro-tehnocats.netlify.app/");
 const $$CategoryCloud = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$CategoryCloud;
-  const allPosts = await Astro2.glob(/* #__PURE__ */ Object.assign({"../pages/blog/aleksei-smirnov.md": () => import('./aleksei-smirnov.md.63ed0e84.mjs').then(n => n._),"../pages/blog/alexander-semenov.md": () => import('./alexander-semenov.md.3e65c1cf.mjs').then(n => n._),"../pages/blog/dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.542b27be.mjs').then(n => n._),"../pages/blog/elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.167f415c.mjs').then(n => n._),"../pages/blog/maria-kikot.md": () => import('./maria-kikot.md.5ce6b339.mjs').then(n => n._)}), () => "../pages/blog/*.md");
+  const allPosts = await Astro2.glob(/* #__PURE__ */ Object.assign({"../pages/blog/aleksei-smirnov.md": () => import('./aleksei-smirnov.md.2453da39.mjs').then(n => n._),"../pages/blog/alexander-semenov.md": () => import('./alexander-semenov.md.3a38e63a.mjs').then(n => n._),"../pages/blog/dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.1a9f8a13.mjs').then(n => n._),"../pages/blog/elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.eb31b809.mjs').then(n => n._),"../pages/blog/igor-teplostanski.md": () => import('./igor-teplostanski.md.ae4901cc.mjs').then(n => n._),"../pages/blog/maria-kikot.md": () => import('./maria-kikot.md.b1d9ec8a.mjs').then(n => n._)}), () => "../pages/blog/*.md");
   const formattedPosts = formatBlogPosts(allPosts, {
     filterOutDrafts: false,
     filterOutFuturePosts: false,
@@ -49,7 +49,7 @@ const $$Pagination = createComponent(async ($$result, $$props, $$slots) => {
 const $$Astro = createAstro("https://astro-tehnocats.netlify.app/");
 const Astro = $$Astro;
 async function getStaticPaths({ paginate }) {
-  const allPosts = await Astro.glob(/* #__PURE__ */ Object.assign({"./aleksei-smirnov.md": () => import('./aleksei-smirnov.md.63ed0e84.mjs').then(n => n._),"./alexander-semenov.md": () => import('./alexander-semenov.md.3e65c1cf.mjs').then(n => n._),"./dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.542b27be.mjs').then(n => n._),"./elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.167f415c.mjs').then(n => n._),"./maria-kikot.md": () => import('./maria-kikot.md.5ce6b339.mjs').then(n => n._)}), () => "./*.md");
+  const allPosts = await Astro.glob(/* #__PURE__ */ Object.assign({"./aleksei-smirnov.md": () => import('./aleksei-smirnov.md.2453da39.mjs').then(n => n._),"./alexander-semenov.md": () => import('./alexander-semenov.md.3a38e63a.mjs').then(n => n._),"./dmitry-mytnikau.md": () => import('./dmitry-mytnikau.md.1a9f8a13.mjs').then(n => n._),"./elizaveta-obrezkova.md": () => import('./elizaveta-obrezkova.md.eb31b809.mjs').then(n => n._),"./igor-teplostanski.md": () => import('./igor-teplostanski.md.ae4901cc.mjs').then(n => n._),"./maria-kikot.md": () => import('./maria-kikot.md.b1d9ec8a.mjs').then(n => n._)}), () => "./*.md");
   const formattedPosts = formatBlogPosts(allPosts, {
     filterOutDrafts: false,
     filterOutFuturePosts: false,

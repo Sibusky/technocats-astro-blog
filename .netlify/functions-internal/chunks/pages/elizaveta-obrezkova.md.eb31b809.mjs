@@ -1,5 +1,5 @@
 import { g as createVNode, s as spreadAttributes, F as Fragment } from '../astro.f03c80ea.mjs';
-import { $ as $$BlogPostLayout } from './aleksei-smirnov.md.63ed0e84.mjs';
+import { $ as $$BlogPostLayout } from './aleksei-smirnov.md.2453da39.mjs';
 
 const images = {
 					
