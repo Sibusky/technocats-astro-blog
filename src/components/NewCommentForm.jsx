@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 import FormButton from "./FormButton";
 import FormInput from "./FormInput";
 import useFormWithValidation from "../js/FormValidator";
@@ -8,7 +8,8 @@ import { doc, setDoc, getDoc, addDoc, collection } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
 
-export const prerender = true
+// disable SSR on this page
+export const prerender = true;
 
 export function NewCommentForm({ id }) {
   const { values, handleChange, errors, isValid, resetForm } =
@@ -50,9 +51,9 @@ export function NewCommentForm({ id }) {
     showMessage();
   }
 
-  // function onChange(value) {
-  //   setIsCaptchaSuccess(true);
-  // }
+  function onChange(value) {
+    setIsCaptchaSuccess(true);
+  }
 
   return (
     <>
@@ -93,10 +94,10 @@ export function NewCommentForm({ id }) {
               {errors.comment}
             </span>
           </div>
-          {/* <ReCAPTCHA
+          <ReCAPTCHA
             sitekey="6LfkAUAmAAAAAD3nCp4gMG7MBEuV-5yEp7ISV9pT"
             onChange={onChange}
-          /> */}
+          />
           <FormButton
             onClick={(e) => {
               e.preventDefault();
