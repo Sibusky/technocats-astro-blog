@@ -8,9 +8,6 @@ import { doc, setDoc, getDoc, addDoc, collection } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
 
-// disable SSR on this page
-export const prerender = true;
-
 export function NewCommentForm({ id }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
@@ -49,10 +46,6 @@ export function NewCommentForm({ id }) {
     await addDoc(commentsCollection, newComment);
     resetForm();
     showMessage();
-  }
-
-  function onChange(value) {
-    setIsCaptchaSuccess(true);
   }
 
   return (
@@ -96,7 +89,7 @@ export function NewCommentForm({ id }) {
           </div>
           <ReCAPTCHA
             sitekey="6LfkAUAmAAAAAD3nCp4gMG7MBEuV-5yEp7ISV9pT"
-            onChange={onChange}
+            onChange={() => setIsCaptchaSuccess(true)}
           />
           <FormButton
             onClick={(e) => {
