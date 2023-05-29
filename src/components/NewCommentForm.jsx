@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import FormButton from "./FormButton";
 import FormInput from "./FormInput";
 import useFormWithValidation from "../js/FormValidator";
@@ -13,7 +13,7 @@ export function NewCommentForm({ id }) {
     useFormWithValidation();
 
   const [isMessageSent, setIsMessageSent] = useState(false);
-  const [isCaptchaSuccessful, setIsCaptchaSuccess] = useState(false);
+  // const [isCaptchaSuccessful, setIsCaptchaSuccess] = useState(false);
 
   const docRef = doc(db, "comments", `post-${id}`);
   const commentsCollection = collection(docRef, "comments-list");
@@ -46,10 +46,6 @@ export function NewCommentForm({ id }) {
     await addDoc(commentsCollection, newComment);
     resetForm();
     showMessage();
-  }
-
-  function onChange(value) {
-    setIsCaptchaSuccess(true);
   }
 
   return (
@@ -91,18 +87,22 @@ export function NewCommentForm({ id }) {
               {errors.comment}
             </span>
           </div>
-          <ReCAPTCHA
+          {/* <ReCAPTCHA
             sitekey="6LfkAUAmAAAAAD3nCp4gMG7MBEuV-5yEp7ISV9pT"
-            onChange={onChange}
-          />
+            onChange={() => setIsCaptchaSuccess(true)}
+          /> */}
           <FormButton
             onClick={(e) => {
               e.preventDefault();
               addComment();
             }}
-            disabled={isValid && isCaptchaSuccessful ? false : true}
+            disabled={isValid 
+              // && isCaptchaSuccessful 
+              ? false 
+              : true}
             className={
-              isValid && isCaptchaSuccessful
+              isValid 
+              // && isCaptchaSuccessful
                 ? "link secondary filled comment_button"
                 : "link secondary comment_button_inactive"
             }

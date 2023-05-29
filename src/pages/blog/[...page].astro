@@ -8,22 +8,24 @@ import CategoryCloud from "../../components/CategoryCloud.astro";
 // utils imports
 import { formatBlogPosts } from "../../js/utils";
 
+// disable SSR on this page
+export const prerender = true;
+
 export async function getStaticPaths({ paginate }) {
   const allPosts = await Astro.glob("./*.md");
-const formattedPosts = formatBlogPosts(allPosts, {
-  filterOutDrafts: false,
-  filterOutFuturePosts: false,
-  sortByDate: true,
-  limit: 6,
-});
- 
-return paginate(formattedPosts, {
-  pageSize: 3,
-})
+  const formattedPosts = formatBlogPosts(allPosts, {
+    filterOutDrafts: false,
+    filterOutFuturePosts: false,
+    sortByDate: true,
+    limit: 6,
+  });
+
+  return paginate(formattedPosts, {
+    pageSize: 3,
+  });
 }
 
-const { page } = Astro.props
-
+const { page } = Astro.props;
 ---
 
 <MainLayout
@@ -31,21 +33,22 @@ const { page } = Astro.props
   description="TehnoCats internship in Birka company"
 >
   <section class="container" aria-label="New Blog Posts">
-      <h1 class="h1">All Blog Posts</h1>
-      <div class="post-container">
-        {
-          page.data.map(post => <PostCard
-                          frontmatter={post.frontmatter}
-                          url={post.url}
-                          tagType="h2"
-                  />
-          )
-        }
-      </div>
-      <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+    <h1 class="h1">All Blog Posts</h1>
+    <div class="post-container">
+      {
+        page.data.map((post) => (
+          <PostCard
+            frontmatter={post.frontmatter}
+            url={post.url}
+            tagType="h2"
+          />
+        ))
+      }
+    </div>
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>
-   <aside class="container" aria-label="Blog categories">
+  <aside class="container" aria-label="Blog categories">
     <h2 class="h3">Blog Categories</h2>
-    <CategoryCloud showCount={true}/>
+    <CategoryCloud showCount={true} />
   </aside>
 </MainLayout>

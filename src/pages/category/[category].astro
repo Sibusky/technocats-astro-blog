@@ -6,6 +6,9 @@ import PostCard from "../../components/PostCard.astro";
 // utils
 import { slugify, formatBlogPosts } from "../../js/utils";
 
+// disable SSR on this page
+export const prerender = true;
+
 export async function getStaticPaths() {
   return [
     {
