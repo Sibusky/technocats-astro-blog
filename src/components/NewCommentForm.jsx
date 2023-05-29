@@ -4,7 +4,7 @@ import FormButton from "./FormButton";
 import FormInput from "./FormInput";
 import useFormWithValidation from "../js/FormValidator";
 
-import { doc, setDoc, getDoc, addDoc, collection } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
 
@@ -15,8 +15,8 @@ export function NewCommentForm({ id }) {
   const [isMessageSent, setIsMessageSent] = useState(false);
   // const [isCaptchaSuccessful, setIsCaptchaSuccess] = useState(false);
 
-  const docRef = doc(db, "comments", `post-${id}`);
-  const commentsCollection = collection(docRef, "comments-list");
+  const docRef = doc(db, "allComments", `post-${id}-${Date.now()}`);
+  // const commentsCollection = collection(docRef, "comments-list");
 
   function showMessage() {
     setIsMessageSent(true);
@@ -29,21 +29,18 @@ export function NewCommentForm({ id }) {
     if (!(values.author && values.comment)) {
       return;
     }
-    const commentsRef = await getDoc(docRef);
-    // if doc doesn't exist, create one
-    if (!commentsRef.exists()) {
-      await setDoc(docRef, {});
-    }
 
     const newComment = {
       id: Date.now(),
+      postId: id,
+      draft: true,
       author: values.author,
       comment: values.comment,
       date: new Date().toLocaleDateString(),
       likes: 0,
       dislikes: 0,
     };
-    await addDoc(commentsCollection, newComment);
+    await setDoc(docRef, newComment);
     resetForm();
     showMessage();
   }
@@ -96,14 +93,16 @@ export function NewCommentForm({ id }) {
               e.preventDefault();
               addComment();
             }}
-            disabled={isValid 
-              // && isCaptchaSuccessful 
-              ? false 
-              : true}
+            disabled={
+              isValid
+                ? // && isCaptchaSuccessful
+                  false
+                : true
+            }
             className={
-              isValid 
-              // && isCaptchaSuccessful
-                ? "link secondary filled comment_button"
+              isValid
+                ? // && isCaptchaSuccessful
+                  "link secondary filled comment_button"
                 : "link secondary comment_button_inactive"
             }
           >

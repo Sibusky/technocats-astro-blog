@@ -1,16 +1,13 @@
 ---
 import { collection, doc, getDocs } from "firebase/firestore";
-import { getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../js/firestoreConfig.js";
 import PersonIcon from "../assets/PersonIcon.jsx";
-import HandThumbsUpIcon from "../assets/HandThumbsUpIcon.jsx";
-import HandThumbsDownIcon from "../assets/HandThumbsDownIcon.jsx";
 import CommentRatingButtons from "./CommentRatingButtons.jsx";
-import React from "react";
+
 const { id } = Astro.props;
 
-const docRef = doc(db, "comments", `post-${id}`);
-const commentsCollection = collection(docRef, "comments-list");
+const docRef = doc(db, "allComments", `post-${id}-${Date.now()}`);
+const commentsCollection = collection(db, "allComments");
 
 let comments = [];
 const commentsByFirestone = await getDocs(commentsCollection);
@@ -21,10 +18,16 @@ commentsByFirestone.forEach((comment) => {
   });
 });
 
+const filtredByPostCommens = comments.filter(
+  (comment) => comment.data.postId === id
+);
+const filtredByPostAndDraftComments = filtredByPostCommens.filter(
+  (comment) => comment.data.draft === 'false'
+);
 ---
 
 {
-  comments
+  filtredByPostAndDraftComments
     .sort((a, b) => a.data.id - b.data.id)
     .map((comment) => (
       <div class="comment">
