@@ -7,6 +7,9 @@ import Link from "../components/Link.astro";
 // utils imports
 import { formatBlogPosts } from "../js/utils";
 
+// disable SSR on this page
+export const prerender = true;
+
 const allPosts = await Astro.glob("./blog/*.md");
 const formattedPosts = formatBlogPosts(allPosts, {
   limit: 3,
