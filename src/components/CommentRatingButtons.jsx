@@ -5,22 +5,16 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../js/firestoreConfig.js";
 
 const CommentRatingButtons = ({ comment, postId, comId }) => {
-  const commentRef = doc(
-    db,
-    "comments",
-    `post-${postId}`,
-    "comments-list",
-    comId
-  );
+  const commentRef = doc(db, "allComments", `${comId}`);
   const [likes, setLikes] = useState(comment.likes);
   const [dislikes, setDislikes] = useState(comment.dislikes);
 
   const handleLikeClick = async () => {
     const comment = await getDoc(commentRef);
-    const lastVote = localStorage.getItem(`post-${postId}-${comId}-lastVote`);
+    const lastVote = localStorage.getItem(`${comId}-lastVote`);
 
     if (!lastVote) {
-      localStorage.setItem(`post-${postId}-${comId}-lastVote`, "liked");
+      localStorage.setItem(`${comId}-lastVote`, "liked");
       const newRating = {
         likes: ++comment.data().likes,
       };
@@ -29,8 +23,8 @@ const CommentRatingButtons = ({ comment, postId, comId }) => {
     } else if (lastVote === "liked") {
       return;
     } else if (lastVote === "disliked") {
-      localStorage.removeItem(`post-${postId}-${comId}-lastVote`);
-      localStorage.setItem(`post-${postId}-${comId}-lastVote`, "liked");
+      localStorage.removeItem(`${comId}-lastVote`);
+      localStorage.setItem(`${comId}-lastVote`, "liked");
       const newRating = {
         likes: ++comment.data().likes,
         dislikes: --comment.data().dislikes,
@@ -43,10 +37,10 @@ const CommentRatingButtons = ({ comment, postId, comId }) => {
 
   const handleDislikeClick = async () => {
     const comment = await getDoc(commentRef);
-    const lastVote = localStorage.getItem(`post-${postId}-${comId}-lastVote`);
+    const lastVote = localStorage.getItem(`${comId}-lastVote`);
 
     if (!lastVote) {
-      localStorage.setItem(`post-${postId}-${comId}-lastVote`, "disliked");
+      localStorage.setItem(`${comId}-lastVote`, "disliked");
       const newRating = {
         dislikes: ++comment.data().dislikes,
       };
@@ -55,8 +49,8 @@ const CommentRatingButtons = ({ comment, postId, comId }) => {
     } else if (lastVote === "disliked") {
       return;
     } else if (lastVote === "liked") {
-      localStorage.removeItem(`post-${postId}-${comId}-lastVote`);
-      localStorage.setItem(`post-${postId}-${comId}-lastVote`, "disliked");
+      localStorage.removeItem(`${comId}-lastVote`);
+      localStorage.setItem(`${comId}-lastVote`, "disliked");
       const newRating = {
         likes: --comment.data().likes,
         dislikes: ++comment.data().dislikes,
