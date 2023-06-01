@@ -10,21 +10,20 @@ export const slugify = (text) => {
 };
 
 export const formatDate = (date) => {
+  let d = new Date(date),
+    month = "" + (d.getMonth() + 1),
+    day = "" + d.getDate(),
+    year = d.getFullYear();
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [day, month, year].join(".");
+};
+
+export const getCustomFormatDate = (date) => {
   let today = new Date();
   let yesterday = new Date();
   let dateValue = new Date(date);
-
-  const getCustomFormatDate = (date) => {
-    var d = new Date(date),
-      month = "" + (d.getMonth() + 1),
-      day = "" + d.getDate(),
-      year = d.getFullYear();
-
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-
-    return [day, month, year].join(".");
-  };
 
   const dropHMS = (date) => {
     date.setHours(0);
@@ -44,7 +43,7 @@ export const formatDate = (date) => {
     } else if (yesterday.getTime() === dateValue.getTime()) {
       return "Вчера";
     } else {
-      return getCustomFormatDate(date);
+      return formatDate(date);
     }
   }
 };
