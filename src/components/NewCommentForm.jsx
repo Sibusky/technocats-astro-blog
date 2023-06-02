@@ -7,6 +7,7 @@ import useFormWithValidation from "../js/FormValidator";
 import { doc, setDoc } from "firebase/firestore";
 
 import { db } from "../js/firestoreConfig";
+import { formatDate } from "../js/utils";
 
 export function NewCommentForm({ id }) {
   const { values, handleChange, errors, isValid, resetForm } =
@@ -36,7 +37,7 @@ export function NewCommentForm({ id }) {
       draft: true,
       author: values.author,
       comment: values.comment,
-      date: new Date().toLocaleDateString(),
+      date: formatDate(Date.now()),
       likes: 0,
       dislikes: 0,
     };
