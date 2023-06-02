@@ -3,6 +3,7 @@ import { collection, doc, getDocs } from "firebase/firestore";
 import { db } from "../js/firestoreConfig.js";
 import PersonIcon from "../assets/PersonIcon.jsx";
 import CommentRatingButtons from "./CommentRatingButtons.jsx";
+import { getCustomFormatDate } from "../js/utils.js";
 
 const { id } = Astro.props;
 
@@ -24,6 +25,15 @@ const filtredByPostCommens = comments.filter(
 const filtredByPostAndDraftComments = filtredByPostCommens.filter(
   (comment) => comment.data.draft === 'false'
 );
+
+const renderCustomDate = (date) =>{
+  const arr = date.split("");
+  [arr[0], arr[3]] = [arr[3], arr[0]];
+  [arr[1], arr[4]] = [arr[4], arr[1]];
+  const usaFormatDate = arr.join("");
+  const ms = Date.parse(usaFormatDate)
+  return getCustomFormatDate(ms)
+}
 ---
 
 {
@@ -34,7 +44,7 @@ const filtredByPostAndDraftComments = filtredByPostCommens.filter(
         <div class="info-about-comment">
           <PersonIcon />
           <h4 class="comment-author">{comment.data.author}</h4>
-          <p>{comment.data.date}</p>
+          <p>{renderCustomDate(comment.data.date)}</p>
         </div>
         <p class="comment__text">{comment.data.comment}</p>
         <CommentRatingButtons
