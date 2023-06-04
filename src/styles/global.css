@@ -963,23 +963,16 @@ header .container {
 
 .comment_button_inactive {
   background-color: #f8f8f8;
-  color: #252525;
+  color: #a5a5a5;
   cursor: default;
   margin: 20px 0 0 0;
 }
 
-.comment__likebuttons {
+.comment__like {
   width: 100px;
   height: 50px;
   display: grid;
   grid-template-columns: repeat(2, auto);
-}
-
-.comment__like {
-  background-color: #f0eeee;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  padding: 5px;
 }
 
 .error-message {
@@ -987,4 +980,17 @@ header .container {
   padding: 0;
   font-size: 13px;
   color: red;
+}
+
+.comment__like_icon {
+  background-color: #f0eeee;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 5px;
+  width: inherit;
+  height: inherit;
+}
+
+.comment__like_wrapper {
+  gap: 10px !important;
 }

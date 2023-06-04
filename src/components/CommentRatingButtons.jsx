@@ -62,10 +62,9 @@ const CommentRatingButtons = ({ comment, postId, comId }) => {
   };
 
   return (
-    <div className="comment__likebuttons">
+    <div className="comment__like">
       <button
         onClick={handleLikeClick}
-        className="comment__like"
         type="button"
         aria-label="Полезно"
       >
@@ -73,7 +72,6 @@ const CommentRatingButtons = ({ comment, postId, comId }) => {
       </button>
       <button
         onClick={handleDislikeClick}
-        className="comment__like"
         type="button"
         aria-label="Бесполезно"
       >
