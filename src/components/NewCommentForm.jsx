@@ -104,7 +104,7 @@ export function NewCommentForm({ id }) {
               isValid
                 ? // && isCaptchaSuccessful
                   "link secondary filled comment_button"
-                : "link secondary comment_button_inactive"
+                : "link comment_button_inactive"
             }
           >
             <span>Add your Comment</span>

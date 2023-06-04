@@ -36,6 +36,7 @@ h6 {
   --txt--light: var(--_hue) 40% 5%;
   --accent--light: var(--_hue) 55% 50%;
   --muted--light: var(--_hue) 30% 99%;
+  --gray: #a5a5a5;
   --bkg--dark: var(--_hue) 15% 10%;
   --txt--dark: var(--_hue) 20% 85%;
   --accent--dark: var(--_hue) 50% 50%;
@@ -141,6 +142,52 @@ h6 {
     --_shadow-strength: 0.75;
     --_shadow-saturation: 75%;
     --_shadow-lightness: 6%;
+  }
+
+  .hand-thumbs {
+    filter: invert(1);
+  }
+
+  .hand-thumbs:hover + span + button:hover {
+    filter: invert(0);
+  }
+
+  a:hover,
+  button:hover {
+    color: #818080 !important;
+  }
+
+  [aria-label="Blog categories"] .post,
+  [aria-label="Related posts"] .post {
+    background-color: #2c2c3a !important;
+  }
+
+  .comment {
+    background-color: #2c2c3a !important;
+  }
+
+  .comment__like_icon {
+    background: #c6c6d4 !important;
+  }
+
+  .comment-form {
+    border: 2px solid #2c2c3a !important;
+  }
+
+  .input-container input,
+  textarea {
+    border-bottom: 2px solid #2c2c3a !important;
+  }
+
+  .comment_button_inactive {
+    background-color: #2c2c3a !important;
+    color: #c6c6d4 !important;
+  }
+
+  .input-container,
+  input::placeholder,
+  textarea::placeholder {
+    color: #c6c6d4 !important;
   }
 }
 
@@ -911,7 +958,7 @@ header .container {
 }
 
 .comment-form {
-  border: 1px solid hsl(var(--accent));
+  border: 1px solid var(--gray);
   padding: var(--space-md);
   box-sizing: border-box;
   border-radius: var(--radius-md);
@@ -974,6 +1021,13 @@ header .container {
   display: grid;
   grid-template-columns: repeat(2, auto);
 }
+
+/*.comment__like {
+  background-color: #f0eeee;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 5px;
+}*/
 
 .error-message {
   margin-top: -20px;
