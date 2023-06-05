@@ -950,11 +950,18 @@ header .container {
 }
 
 .info-about-comment {
-  display: grid;
+  display: flex !important;
   grid-template-columns: repeat(3, auto);
   width: 100%;
-  justify-content: start;
+  font-size: max(0.78rem, min(calc(0.75rem + 0.17vw), 0.88rem));
   font-size: var(--fs-sm);
+  align-items: center;
+}
+
+.info-about-comment__wrapper {
+  display: flex !important;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .comment-form {
