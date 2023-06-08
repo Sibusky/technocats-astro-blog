@@ -3,6 +3,7 @@ import HandThumbsDownIcon from "../assets/HandThumbsDownIcon.jsx";
 import React, { useState } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../js/firestoreConfig.js";
+import CommentReactionButtons from "./CommentReactionButtons.jsx";
 
 const CommentRatingButtons = ({ comment, postId, comId }) => {
   const commentRef = doc(db, "allComments", `${comId}`);
@@ -62,22 +63,20 @@ const CommentRatingButtons = ({ comment, postId, comId }) => {
   };
 
   return (
-    <div className="comment__likebuttons">
-      <button
-        onClick={handleLikeClick}
-        className="comment__like"
-        type="button"
-        aria-label="Полезно"
-      >
-        <HandThumbsUpIcon likes={likes} />
+    <div className="comment__like">
+      <button onClick={handleLikeClick} type="button" aria-label="Полезно">
+        <CommentReactionButtons reaction={likes}>
+          <HandThumbsUpIcon />
+        </CommentReactionButtons>
       </button>
       <button
         onClick={handleDislikeClick}
-        className="comment__like"
         type="button"
         aria-label="Бесполезно"
       >
-        <HandThumbsDownIcon dislikes={dislikes} />
+        <CommentReactionButtons reaction={dislikes}>
+          <HandThumbsDownIcon />
+        </CommentReactionButtons>
       </button>
     </div>
   );
