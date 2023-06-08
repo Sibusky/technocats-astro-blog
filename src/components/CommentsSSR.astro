@@ -23,17 +23,17 @@ const filtredByPostCommens = comments.filter(
   (comment) => comment.data.postId === id
 );
 const filtredByPostAndDraftComments = filtredByPostCommens.filter(
-  (comment) => comment.data.draft === 'false'
+  (comment) => comment.data.draft === "false"
 );
 
-const renderCustomDate = (date) =>{
+const renderCustomDate = (date) => {
   const arr = date.split("");
   [arr[0], arr[3]] = [arr[3], arr[0]];
   [arr[1], arr[4]] = [arr[4], arr[1]];
   const usaFormatDate = arr.join("");
-  const ms = Date.parse(usaFormatDate)
-  return getCustomFormatDate(ms)
-}
+  const ms = Date.parse(usaFormatDate);
+  return getCustomFormatDate(ms);
+};
 ---
 
 {
@@ -43,8 +43,10 @@ const renderCustomDate = (date) =>{
       <div class="comment">
         <div class="info-about-comment">
           <PersonIcon />
-          <h4 class="comment-author">{comment.data.author}</h4>
-          <p>{renderCustomDate(comment.data.date)}</p>
+          <div class="info-about-comment__wrapper">
+            <h4 class="comment-author">{comment.data.author}</h4>
+            <p>{renderCustomDate(comment.data.date)}</p>
+          </div>
         </div>
         <p class="comment__text">{comment.data.comment}</p>
         <CommentRatingButtons

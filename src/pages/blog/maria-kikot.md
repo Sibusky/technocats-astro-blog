@@ -1,13 +1,10 @@
 ---
 id: 05
 layout: "../../layouts/BlogPostLayout.astro"
-title: Maria Kikot. Changing the career in IT.
+title: Maria Kikot - "Breaking Free - Overcoming Career Change Challenges and Finding Fulfillment"
 date: 2023-05-09
 author: Maria Kikot
-image: {
-  src: "/images/maria-kikot.jpg",
-  alt: "Maria's photo",
-}
+image: { src: "/images/maria-kikot.jpg", alt: "Maria's photo" }
 description: How to live when you are perfectionist?
 draft: false
 category: Changing the career
