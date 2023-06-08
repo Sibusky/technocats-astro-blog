@@ -23,7 +23,7 @@ export function NewCommentForm({ id }) {
     setIsMessageSent(true);
     setTimeout(() => {
       setIsMessageSent(false);
-    }, 5000);
+    }, 8000);
   }
 
   async function addComment() {

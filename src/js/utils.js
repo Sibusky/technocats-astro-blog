@@ -53,7 +53,8 @@ export function formatBlogPosts(
   {
     filterOutDrafts = true,
     filterOutFuturePosts = true,
-    sortByDate = true,
+    sortByDate = false,
+    sortById = true,
     limit = undefined,
   } = {}
 ) {
@@ -76,6 +77,8 @@ export function formatBlogPosts(
     filteredPosts.sort(
       (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
     );
+  } else if (sortById) {
+    filteredPosts.sort((a, b) => a.frontmatter.id - b.frontmatter.id);
   } else {
     filteredPosts.sort(() => Math.random() - 0.5);
   }
