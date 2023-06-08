@@ -22,8 +22,6 @@ There were 6 of us who worked on this project:
   <img src="https://contrib.rocks/image?repo=Sibusky/technocats-astro-blog" />
 </a>
 
-<image src="./public/favicon.svg" alt="TehnoCats prints" width="40" height="40">
-
 Link: https://astro-technocats.netlify.app/
 
 <image src="./public/images/technoCats.jpg" alt="TehnoCats" width="304" height="374">
