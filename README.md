@@ -32,6 +32,4 @@ Once user submits a comment, a POST request goes to Firestore database where all
 
 All pages with approved comments are rendered on server side. This means they are visible for searching robots from Google or Yandex.
 
-Все страницы с комментариями рендерятся на сервере. Это означает, что они видны поисковым роботам Google и Yandex.
-
 <image src="./public/images/technoCats.jpg" alt="TehnoCats" width="304" height="374">
